@@ -4,6 +4,7 @@ part of 'game_cubit.dart';
 class GameState with _$GameState {
   factory GameState({
     @Default([]) List<ConnectedUsers> connectedUsers,
+    @Default('') String gameId,
     @Default(GameStatus.initial()) GameStatus status,
   }) = _GameState;
 }
@@ -11,5 +12,7 @@ class GameState with _$GameState {
 @freezed
 class GameStatus with _$GameStatus {
   const factory GameStatus.initial() = _Initial;
-  const factory GameStatus.updated() = _Updated;
+  const factory GameStatus.gameCreated() = GameCreated;
+  const factory GameStatus.gameJoined() = GameJoined;
+  const factory GameStatus.updated() = Updated;
 }

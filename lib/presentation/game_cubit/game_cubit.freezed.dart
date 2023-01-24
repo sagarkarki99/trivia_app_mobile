@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$GameState {
   List<ConnectedUsers> get connectedUsers => throw _privateConstructorUsedError;
+  String get gameId => throw _privateConstructorUsedError;
   GameStatus get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +30,8 @@ abstract class $GameStateCopyWith<$Res> {
   factory $GameStateCopyWith(GameState value, $Res Function(GameState) then) =
       _$GameStateCopyWithImpl<$Res, GameState>;
   @useResult
-  $Res call({List<ConnectedUsers> connectedUsers, GameStatus status});
+  $Res call(
+      {List<ConnectedUsers> connectedUsers, String gameId, GameStatus status});
 
   $GameStatusCopyWith<$Res> get status;
 }
@@ -48,6 +50,7 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
   @override
   $Res call({
     Object? connectedUsers = null,
+    Object? gameId = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
@@ -55,6 +58,10 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
           ? _value.connectedUsers
           : connectedUsers // ignore: cast_nullable_to_non_nullable
               as List<ConnectedUsers>,
+      gameId: null == gameId
+          ? _value.gameId
+          : gameId // ignore: cast_nullable_to_non_nullable
+              as String,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -78,7 +85,8 @@ abstract class _$$_GameStateCopyWith<$Res> implements $GameStateCopyWith<$Res> {
       __$$_GameStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ConnectedUsers> connectedUsers, GameStatus status});
+  $Res call(
+      {List<ConnectedUsers> connectedUsers, String gameId, GameStatus status});
 
   @override
   $GameStatusCopyWith<$Res> get status;
@@ -96,6 +104,7 @@ class __$$_GameStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? connectedUsers = null,
+    Object? gameId = null,
     Object? status = null,
   }) {
     return _then(_$_GameState(
@@ -103,6 +112,10 @@ class __$$_GameStateCopyWithImpl<$Res>
           ? _value._connectedUsers
           : connectedUsers // ignore: cast_nullable_to_non_nullable
               as List<ConnectedUsers>,
+      gameId: null == gameId
+          ? _value.gameId
+          : gameId // ignore: cast_nullable_to_non_nullable
+              as String,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -116,6 +129,7 @@ class __$$_GameStateCopyWithImpl<$Res>
 class _$_GameState implements _GameState {
   _$_GameState(
       {final List<ConnectedUsers> connectedUsers = const [],
+      this.gameId = '',
       this.status = const GameStatus.initial()})
       : _connectedUsers = connectedUsers;
 
@@ -130,11 +144,14 @@ class _$_GameState implements _GameState {
 
   @override
   @JsonKey()
+  final String gameId;
+  @override
+  @JsonKey()
   final GameStatus status;
 
   @override
   String toString() {
-    return 'GameState(connectedUsers: $connectedUsers, status: $status)';
+    return 'GameState(connectedUsers: $connectedUsers, gameId: $gameId, status: $status)';
   }
 
   @override
@@ -144,12 +161,13 @@ class _$_GameState implements _GameState {
             other is _$_GameState &&
             const DeepCollectionEquality()
                 .equals(other._connectedUsers, _connectedUsers) &&
+            (identical(other.gameId, gameId) || other.gameId == gameId) &&
             (identical(other.status, status) || other.status == status));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_connectedUsers), status);
+      const DeepCollectionEquality().hash(_connectedUsers), gameId, status);
 
   @JsonKey(ignore: true)
   @override
@@ -161,10 +179,13 @@ class _$_GameState implements _GameState {
 abstract class _GameState implements GameState {
   factory _GameState(
       {final List<ConnectedUsers> connectedUsers,
+      final String gameId,
       final GameStatus status}) = _$_GameState;
 
   @override
   List<ConnectedUsers> get connectedUsers;
+  @override
+  String get gameId;
   @override
   GameStatus get status;
   @override
@@ -178,18 +199,24 @@ mixin _$GameStatus {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() gameCreated,
+    required TResult Function() gameJoined,
     required TResult Function() updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameJoined,
     TResult? Function()? updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? gameCreated,
+    TResult Function()? gameJoined,
     TResult Function()? updated,
     required TResult orElse(),
   }) =>
@@ -197,19 +224,25 @@ mixin _$GameStatus {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Updated value) updated,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Updated value)? updated,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Updated value)? updated,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -271,6 +304,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() gameCreated,
+    required TResult Function() gameJoined,
     required TResult Function() updated,
   }) {
     return initial();
@@ -280,6 +315,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameJoined,
     TResult? Function()? updated,
   }) {
     return initial?.call();
@@ -289,6 +326,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? gameCreated,
+    TResult Function()? gameJoined,
     TResult Function()? updated,
     required TResult orElse(),
   }) {
@@ -302,7 +341,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Updated value) updated,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
   }) {
     return initial(this);
   }
@@ -311,7 +352,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Updated value)? updated,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
   }) {
     return initial?.call(this);
   }
@@ -320,7 +363,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Updated value)? updated,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -335,34 +380,35 @@ abstract class _Initial implements GameStatus {
 }
 
 /// @nodoc
-abstract class _$$_UpdatedCopyWith<$Res> {
-  factory _$$_UpdatedCopyWith(
-          _$_Updated value, $Res Function(_$_Updated) then) =
-      __$$_UpdatedCopyWithImpl<$Res>;
+abstract class _$$GameCreatedCopyWith<$Res> {
+  factory _$$GameCreatedCopyWith(
+          _$GameCreated value, $Res Function(_$GameCreated) then) =
+      __$$GameCreatedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UpdatedCopyWithImpl<$Res>
-    extends _$GameStatusCopyWithImpl<$Res, _$_Updated>
-    implements _$$_UpdatedCopyWith<$Res> {
-  __$$_UpdatedCopyWithImpl(_$_Updated _value, $Res Function(_$_Updated) _then)
+class __$$GameCreatedCopyWithImpl<$Res>
+    extends _$GameStatusCopyWithImpl<$Res, _$GameCreated>
+    implements _$$GameCreatedCopyWith<$Res> {
+  __$$GameCreatedCopyWithImpl(
+      _$GameCreated _value, $Res Function(_$GameCreated) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Updated implements _Updated {
-  const _$_Updated();
+class _$GameCreated implements GameCreated {
+  const _$GameCreated();
 
   @override
   String toString() {
-    return 'GameStatus.updated()';
+    return 'GameStatus.gameCreated()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Updated);
+        (other.runtimeType == runtimeType && other is _$GameCreated);
   }
 
   @override
@@ -372,6 +418,234 @@ class _$_Updated implements _Updated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() gameCreated,
+    required TResult Function() gameJoined,
+    required TResult Function() updated,
+  }) {
+    return gameCreated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameJoined,
+    TResult? Function()? updated,
+  }) {
+    return gameCreated?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? gameCreated,
+    TResult Function()? gameJoined,
+    TResult Function()? updated,
+    required TResult orElse(),
+  }) {
+    if (gameCreated != null) {
+      return gameCreated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
+  }) {
+    return gameCreated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
+  }) {
+    return gameCreated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
+    required TResult orElse(),
+  }) {
+    if (gameCreated != null) {
+      return gameCreated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GameCreated implements GameStatus {
+  const factory GameCreated() = _$GameCreated;
+}
+
+/// @nodoc
+abstract class _$$GameJoinedCopyWith<$Res> {
+  factory _$$GameJoinedCopyWith(
+          _$GameJoined value, $Res Function(_$GameJoined) then) =
+      __$$GameJoinedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GameJoinedCopyWithImpl<$Res>
+    extends _$GameStatusCopyWithImpl<$Res, _$GameJoined>
+    implements _$$GameJoinedCopyWith<$Res> {
+  __$$GameJoinedCopyWithImpl(
+      _$GameJoined _value, $Res Function(_$GameJoined) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GameJoined implements GameJoined {
+  const _$GameJoined();
+
+  @override
+  String toString() {
+    return 'GameStatus.gameJoined()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GameJoined);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() gameCreated,
+    required TResult Function() gameJoined,
+    required TResult Function() updated,
+  }) {
+    return gameJoined();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameJoined,
+    TResult? Function()? updated,
+  }) {
+    return gameJoined?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? gameCreated,
+    TResult Function()? gameJoined,
+    TResult Function()? updated,
+    required TResult orElse(),
+  }) {
+    if (gameJoined != null) {
+      return gameJoined();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
+  }) {
+    return gameJoined(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
+  }) {
+    return gameJoined?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
+    required TResult orElse(),
+  }) {
+    if (gameJoined != null) {
+      return gameJoined(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GameJoined implements GameStatus {
+  const factory GameJoined() = _$GameJoined;
+}
+
+/// @nodoc
+abstract class _$$UpdatedCopyWith<$Res> {
+  factory _$$UpdatedCopyWith(_$Updated value, $Res Function(_$Updated) then) =
+      __$$UpdatedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdatedCopyWithImpl<$Res>
+    extends _$GameStatusCopyWithImpl<$Res, _$Updated>
+    implements _$$UpdatedCopyWith<$Res> {
+  __$$UpdatedCopyWithImpl(_$Updated _value, $Res Function(_$Updated) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$Updated implements Updated {
+  const _$Updated();
+
+  @override
+  String toString() {
+    return 'GameStatus.updated()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Updated);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() gameCreated,
+    required TResult Function() gameJoined,
     required TResult Function() updated,
   }) {
     return updated();
@@ -381,6 +655,8 @@ class _$_Updated implements _Updated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameJoined,
     TResult? Function()? updated,
   }) {
     return updated?.call();
@@ -390,6 +666,8 @@ class _$_Updated implements _Updated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? gameCreated,
+    TResult Function()? gameJoined,
     TResult Function()? updated,
     required TResult orElse(),
   }) {
@@ -403,7 +681,9 @@ class _$_Updated implements _Updated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Updated value) updated,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
   }) {
     return updated(this);
   }
@@ -412,7 +692,9 @@ class _$_Updated implements _Updated {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Updated value)? updated,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
   }) {
     return updated?.call(this);
   }
@@ -421,7 +703,9 @@ class _$_Updated implements _Updated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Updated value)? updated,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
     required TResult orElse(),
   }) {
     if (updated != null) {
@@ -431,6 +715,6 @@ class _$_Updated implements _Updated {
   }
 }
 
-abstract class _Updated implements GameStatus {
-  const factory _Updated() = _$_Updated;
+abstract class Updated implements GameStatus {
+  const factory Updated() = _$Updated;
 }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class SocketClientImpl implements SocketClient {
@@ -15,12 +13,16 @@ class SocketClientImpl implements SocketClient {
 
   @override
   recieveOn(String event, Function(dynamic data) onDataRecieve) {
-    socket.on(event, (data) => log(data));
+    socket.on(event, (data) => onDataRecieve(data));
   }
 
   @override
   send(String event, payload) {
-    socket.emit(event, (data) => log(data));
+    if (!socket.connected) {
+      socket = socket.connect();
+    }
+
+    socket.emit(event, payload);
   }
 
   @override
@@ -38,6 +40,7 @@ abstract class SocketClient {
 
 class SendingEvent {
   static const String createGame = 'createGame';
+  static const String joinGame = 'joinGame';
 }
 
 class RecievingEvent {
