@@ -36,8 +36,16 @@ abstract class SocketClient {
   disconnect();
 }
 
-class GameInputEvent {
+class SendingEvent {
   static const String createGame = 'createGame';
 }
 
-enum GameOutputEvent { gameCreated }
+class RecievingEvent {
+  static const String gameCreated = 'gameCreated';
+  static const String joined = 'joined';
+  static const String questionAsked = 'questionAsked';
+  static const String newAnswerSubmitted = 'newAnswerSubmitted';
+  static const String newUserJoined = 'newUserJoined';
+  static const String gameFinished = 'gameFinished';
+  static const String userLeft = 'userLeft';
+}

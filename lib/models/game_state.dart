@@ -28,16 +28,18 @@ class GameState {
 }
 
 class ConnectedUsers {
-  String? id;
+  String id;
   String? imageUrl;
-  String? name;
+  String name;
 
-  ConnectedUsers({this.id, this.imageUrl, this.name});
+  ConnectedUsers({required this.id, this.imageUrl, required this.name});
 
-  ConnectedUsers.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    imageUrl = json['imageUrl'];
-    name = json['name'];
+  factory ConnectedUsers.fromJson(Map<String, dynamic> json) {
+    return ConnectedUsers(
+      id: json['id']!,
+      imageUrl: json['imageUrl'],
+      name: json['name'] ?? 'Game User',
+    );
   }
 
   Map<String, dynamic> toJson() {
