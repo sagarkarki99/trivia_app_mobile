@@ -9,7 +9,7 @@ class AdminPanelScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('GameId: ${context.read<GameState>().gameId}'),
+        child: Text('GameId: ${context.read<GameCubit>().state.gameId}'),
       ),
     );
   }

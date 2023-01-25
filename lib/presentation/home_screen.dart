@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/presentation/game_cubit/game_cubit.dart';
+import 'package:trivia_app/presentation/question_panel/ui/admin_panel_screen.dart';
 
 import '../data/socket_client.dart';
 import '../di/locator.dart';
@@ -12,7 +13,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<GameCubit>(
       create: (context) => GameCubit(socketClient: locator<SocketClient>()),
       child: const _Body(),
     );
@@ -31,7 +32,7 @@ class _Body extends StatelessWidget {
       },
       builder: (ctx, state) {
         return state.status.maybeWhen(
-            gameCreated: () => Container(),
+            gameCreated: () => const AdminPanelScreen(),
             orElse: () => Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
