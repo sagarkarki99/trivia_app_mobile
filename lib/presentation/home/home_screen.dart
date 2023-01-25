@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/presentation/home/cubit/home_cubit.dart';
+import 'package:trivia_app/presentation/playground/ui/joining_game_screen.dart';
 import 'package:trivia_app/presentation/playground/ui/playground_screen.dart';
 import 'package:trivia_app/presentation/question_panel/ui/admin_panel_screen.dart';
 
@@ -41,7 +42,7 @@ class _Body extends StatelessWidget {
           gameJoined: (initialState) {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const PlaygroundScreen(),
+                builder: (context) => PlaygroundScreen(initialState),
               ),
             );
           },
@@ -56,7 +57,11 @@ class _Body extends StatelessWidget {
                 child: const Text('Create Game')),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () => cubit.joinGame(),
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => JoiningGameScreen(homeCubit: cubit),
+                ),
+              ),
               child: const Text('Join Game'),
             ),
             const SizedBox(height: 20),

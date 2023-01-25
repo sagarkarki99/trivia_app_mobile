@@ -1,8 +1,9 @@
 class InitialGameState {
   List<ConnectedUsers>? connectedUsers;
   ConnectedUsers? admin;
+  String? gameId;
 
-  InitialGameState({this.connectedUsers, this.admin});
+  InitialGameState({this.connectedUsers, this.admin, this.gameId});
 
   InitialGameState.fromJson(Map<String, dynamic> json) {
     if (json['connectedUsers'] != null) {
@@ -13,6 +14,7 @@ class InitialGameState {
     }
     admin =
         json['admin'] != null ? ConnectedUsers.fromJson(json['admin']) : null;
+    gameId = json['gameId'];
   }
 
   Map<String, dynamic> toJson() {

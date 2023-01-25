@@ -22,8 +22,11 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  void joinGame() {
-    socketClient.send(SendingEvent.joinGame, _getRandomUser().toJson());
+  void joinGame(String gameId) {
+    socketClient.send(SendingEvent.joinGame, {
+      "gameId": gameId,
+      "user": _getRandomUser().toJson(),
+    });
   }
 
   void createGame() {

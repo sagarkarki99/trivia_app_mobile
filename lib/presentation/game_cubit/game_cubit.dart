@@ -44,10 +44,22 @@ class GameCubit extends Cubit<GameState> {
         connectedUsers: List.of(state.connectedUsers)..add(user),
       ));
     });
+
+    socketClient.recieveOn(RecievingEvent.questionAsked, (payload) {
+      emit(state.copyWith(
+          status: const GameStatus.updated(),
+          question: QuestionPayload.fromJson(payload as Map<String, dynamic>)));
+    });
   }
 
   void askQuestion(QuestionPayload payload) {
-    socketClient.send(SendingEvent.askQuestion, payload);
+    socketClient.send(
+      SendingEvent.askQuestion,
+      {
+        "gameId": state.gameId,
+        "questionPayload": payload,
+      },
+    );
     emit(state.copyWith(status: const GameStatus.updated(), question: payload));
   }
 }
