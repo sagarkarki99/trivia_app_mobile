@@ -41,6 +41,8 @@ abstract class SocketClient {
 class SendingEvent {
   static const String createGame = 'createGame';
   static const String joinGame = 'joinGame';
+
+  static String askQuestion = 'askQuestion';
 }
 
 class RecievingEvent {

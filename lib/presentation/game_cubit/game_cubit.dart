@@ -1,17 +1,20 @@
-import 'dart:math';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:trivia_app/data/socket_client.dart';
 import '../../models/game_state.dart' as game_state;
 import '../../models/game_state.dart';
+import '../../models/question_payload.dart';
 
 part 'game_state.dart';
 part 'game_cubit.freezed.dart';
 
 class GameCubit extends Cubit<GameState> {
   SocketClient socketClient;
-  GameCubit({required this.socketClient}) : super(GameState()) {
+  GameCubit(
+      {required this.socketClient,
+      required String gameId,
+      List<ConnectedUsers>? connectedUsers})
+      : super(GameState(gameId: gameId, connectedUsers: connectedUsers ?? [])) {
     _listenToEvents();
   }
 
@@ -27,8 +30,8 @@ class GameCubit extends Cubit<GameState> {
     });
 
     socketClient.recieveOn(RecievingEvent.joined, (gameState) {
-      final s =
-          game_state.GameState.fromJson(gameState as Map<String, dynamic>);
+      final s = game_state.InitialGameState.fromJson(
+          gameState as Map<String, dynamic>);
       emit(state.copyWith(
           status: const GameStatus.gameJoined(),
           connectedUsers: s.connectedUsers!));
@@ -43,19 +46,8 @@ class GameCubit extends Cubit<GameState> {
     });
   }
 
-  void joinGame() {
-    socketClient.send(SendingEvent.joinGame, _getRandomUser().toJson());
-  }
-
-  void createGame() {
-    socketClient.send(SendingEvent.createGame, _getRandomUser().toJson());
-  }
-
-  ConnectedUsers _getRandomUser() {
-    return ConnectedUsers(
-      id: 'id${Random().nextInt(100)}',
-      name: 'User${Random().nextInt(100)}',
-      imageUrl: 'asdf',
-    );
+  void askQuestion(QuestionPayload payload) {
+    socketClient.send(SendingEvent.askQuestion, payload);
+    emit(state.copyWith(status: const GameStatus.updated(), question: payload));
   }
 }

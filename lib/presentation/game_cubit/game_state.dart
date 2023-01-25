@@ -6,6 +6,7 @@ class GameState with _$GameState {
     @Default([]) List<ConnectedUsers> connectedUsers,
     @Default('') String gameId,
     @Default(GameStatus.initial()) GameStatus status,
+    QuestionPayload? question,
   }) = _GameState;
 }
 

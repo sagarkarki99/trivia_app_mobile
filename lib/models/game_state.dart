@@ -1,10 +1,10 @@
-class GameState {
+class InitialGameState {
   List<ConnectedUsers>? connectedUsers;
   ConnectedUsers? admin;
 
-  GameState({this.connectedUsers, this.admin});
+  InitialGameState({this.connectedUsers, this.admin});
 
-  GameState.fromJson(Map<String, dynamic> json) {
+  InitialGameState.fromJson(Map<String, dynamic> json) {
     if (json['connectedUsers'] != null) {
       connectedUsers = <ConnectedUsers>[];
       json['connectedUsers'].forEach((v) {

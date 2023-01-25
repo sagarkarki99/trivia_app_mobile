@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trivia_app/presentation/home_screen.dart';
+import 'package:trivia_app/presentation/home/home_screen.dart';
 
 class TriviaApp extends StatelessWidget {
   const TriviaApp({super.key});

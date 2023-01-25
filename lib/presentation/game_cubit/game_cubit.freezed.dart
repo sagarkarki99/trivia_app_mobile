@@ -19,6 +19,7 @@ mixin _$GameState {
   List<ConnectedUsers> get connectedUsers => throw _privateConstructorUsedError;
   String get gameId => throw _privateConstructorUsedError;
   GameStatus get status => throw _privateConstructorUsedError;
+  QuestionPayload? get question => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GameStateCopyWith<GameState> get copyWith =>
@@ -31,9 +32,13 @@ abstract class $GameStateCopyWith<$Res> {
       _$GameStateCopyWithImpl<$Res, GameState>;
   @useResult
   $Res call(
-      {List<ConnectedUsers> connectedUsers, String gameId, GameStatus status});
+      {List<ConnectedUsers> connectedUsers,
+      String gameId,
+      GameStatus status,
+      QuestionPayload? question});
 
   $GameStatusCopyWith<$Res> get status;
+  $QuestionPayloadCopyWith<$Res>? get question;
 }
 
 /// @nodoc
@@ -52,6 +57,7 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
     Object? connectedUsers = null,
     Object? gameId = null,
     Object? status = null,
+    Object? question = freezed,
   }) {
     return _then(_value.copyWith(
       connectedUsers: null == connectedUsers
@@ -66,6 +72,10 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as GameStatus,
+      question: freezed == question
+          ? _value.question
+          : question // ignore: cast_nullable_to_non_nullable
+              as QuestionPayload?,
     ) as $Val);
   }
 
@@ -74,6 +84,18 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
   $GameStatusCopyWith<$Res> get status {
     return $GameStatusCopyWith<$Res>(_value.status, (value) {
       return _then(_value.copyWith(status: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $QuestionPayloadCopyWith<$Res>? get question {
+    if (_value.question == null) {
+      return null;
+    }
+
+    return $QuestionPayloadCopyWith<$Res>(_value.question!, (value) {
+      return _then(_value.copyWith(question: value) as $Val);
     });
   }
 }
@@ -86,10 +108,15 @@ abstract class _$$_GameStateCopyWith<$Res> implements $GameStateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {List<ConnectedUsers> connectedUsers, String gameId, GameStatus status});
+      {List<ConnectedUsers> connectedUsers,
+      String gameId,
+      GameStatus status,
+      QuestionPayload? question});
 
   @override
   $GameStatusCopyWith<$Res> get status;
+  @override
+  $QuestionPayloadCopyWith<$Res>? get question;
 }
 
 /// @nodoc
@@ -106,6 +133,7 @@ class __$$_GameStateCopyWithImpl<$Res>
     Object? connectedUsers = null,
     Object? gameId = null,
     Object? status = null,
+    Object? question = freezed,
   }) {
     return _then(_$_GameState(
       connectedUsers: null == connectedUsers
@@ -120,6 +148,10 @@ class __$$_GameStateCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as GameStatus,
+      question: freezed == question
+          ? _value.question
+          : question // ignore: cast_nullable_to_non_nullable
+              as QuestionPayload?,
     ));
   }
 }
@@ -130,7 +162,8 @@ class _$_GameState implements _GameState {
   _$_GameState(
       {final List<ConnectedUsers> connectedUsers = const [],
       this.gameId = '',
-      this.status = const GameStatus.initial()})
+      this.status = const GameStatus.initial(),
+      this.question})
       : _connectedUsers = connectedUsers;
 
   final List<ConnectedUsers> _connectedUsers;
@@ -148,10 +181,12 @@ class _$_GameState implements _GameState {
   @override
   @JsonKey()
   final GameStatus status;
+  @override
+  final QuestionPayload? question;
 
   @override
   String toString() {
-    return 'GameState(connectedUsers: $connectedUsers, gameId: $gameId, status: $status)';
+    return 'GameState(connectedUsers: $connectedUsers, gameId: $gameId, status: $status, question: $question)';
   }
 
   @override
@@ -162,12 +197,18 @@ class _$_GameState implements _GameState {
             const DeepCollectionEquality()
                 .equals(other._connectedUsers, _connectedUsers) &&
             (identical(other.gameId, gameId) || other.gameId == gameId) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.question, question) ||
+                other.question == question));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_connectedUsers), gameId, status);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_connectedUsers),
+      gameId,
+      status,
+      question);
 
   @JsonKey(ignore: true)
   @override
@@ -180,7 +221,8 @@ abstract class _GameState implements GameState {
   factory _GameState(
       {final List<ConnectedUsers> connectedUsers,
       final String gameId,
-      final GameStatus status}) = _$_GameState;
+      final GameStatus status,
+      final QuestionPayload? question}) = _$_GameState;
 
   @override
   List<ConnectedUsers> get connectedUsers;
@@ -188,6 +230,8 @@ abstract class _GameState implements GameState {
   String get gameId;
   @override
   GameStatus get status;
+  @override
+  QuestionPayload? get question;
   @override
   @JsonKey(ignore: true)
   _$$_GameStateCopyWith<_$_GameState> get copyWith =>
