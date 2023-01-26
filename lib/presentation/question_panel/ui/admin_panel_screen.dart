@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/data/socket_client.dart';
-import 'package:trivia_app/models/question_payload.dart';
+import 'package:trivia_app/presentation/connected_users/ui/connected_users_ui.dart';
 import 'package:trivia_app/presentation/game_cubit/game_cubit.dart';
 
 import '../../../di/locator.dart';
@@ -27,13 +27,14 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: Column(
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           BlocBuilder<GameCubit, GameState>(
             builder: (context, state) {
               if (state.question != null) {
-                return QuestionView(state.question!);
+                return const QuestionView();
               }
               return Text('GameId: ${context.read<GameCubit>().state.gameId}');
             },
@@ -51,25 +52,41 @@ class _Body extends StatelessWidget {
               );
             },
             child: const Text('Ask New Question'),
-          )
+          ),
+          const Text('Connected Users'),
+          const Expanded(child: ConnectedUsersUi()),
         ],
-      )),
+      ),
     );
   }
 }
 
 class QuestionView extends StatelessWidget {
-  final QuestionPayload question;
-  const QuestionView(this.question, {super.key});
+  const QuestionView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(question.question, style: Theme.of(context).textTheme.headline3),
-        const SizedBox(height: 16),
-        ...question.answerOptions.map((e) => Text(e)).toList()
-      ],
+    return BlocBuilder<GameCubit, GameState>(
+      builder: (context, state) {
+        final question = state.question!;
+
+        return Column(
+          children: [
+            Text(question.question,
+                style: Theme.of(context).textTheme.headline3),
+            const SizedBox(height: 16),
+            ...question.answerOptions
+                .map((e) => Row(
+                      children: [
+                        Text(e),
+                        const SizedBox(width: 6),
+                        Text(state.getUserCountFor(e).toString())
+                      ],
+                    ))
+                .toList()
+          ],
+        );
+      },
     );
   }
 }

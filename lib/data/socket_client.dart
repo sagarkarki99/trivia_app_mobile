@@ -43,6 +43,8 @@ class SendingEvent {
   static const String joinGame = 'joinGame';
 
   static String askQuestion = 'askQuestion';
+
+  static String answerQuestion = 'answerQuestion';
 }
 
 class RecievingEvent {

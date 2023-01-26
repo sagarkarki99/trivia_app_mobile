@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:trivia_app/data/socket_client.dart';
+import '../../models/answer.dart';
 import '../../models/game_state.dart' as game_state;
 import '../../models/game_state.dart';
 import '../../models/question_payload.dart';
@@ -10,11 +11,11 @@ part 'game_cubit.freezed.dart';
 
 class GameCubit extends Cubit<GameState> {
   SocketClient socketClient;
-  GameCubit(
-      {required this.socketClient,
-      required String gameId,
-      List<ConnectedUsers>? connectedUsers})
-      : super(GameState(gameId: gameId, connectedUsers: connectedUsers ?? [])) {
+  GameCubit({
+    required this.socketClient,
+    required String gameId,
+    List<ConnectedUser>? connectedUsers,
+  }) : super(GameState(gameId: gameId, connectedUsers: connectedUsers ?? [])) {
     _listenToEvents();
   }
 
@@ -38,7 +39,7 @@ class GameCubit extends Cubit<GameState> {
     });
 
     socketClient.recieveOn(RecievingEvent.newUserJoined, (data) {
-      final user = ConnectedUsers.fromJson(data as Map<String, dynamic>);
+      final user = ConnectedUser.fromJson(data as Map<String, dynamic>);
       emit(state.copyWith(
         status: const GameStatus.updated(),
         connectedUsers: List.of(state.connectedUsers)..add(user),
@@ -49,6 +50,16 @@ class GameCubit extends Cubit<GameState> {
       emit(state.copyWith(
           status: const GameStatus.updated(),
           question: QuestionPayload.fromJson(payload as Map<String, dynamic>)));
+    });
+
+    socketClient.recieveOn(RecievingEvent.newAnswerSubmitted, (payload) {
+      emit(
+        state.copyWith(
+          status: const GameStatus.updated(),
+          answers: List.of(state.answers)
+            ..add(Answer.fromJson(payload as Map<String, dynamic>)),
+        ),
+      );
     });
   }
 
@@ -61,5 +72,15 @@ class GameCubit extends Cubit<GameState> {
       },
     );
     emit(state.copyWith(status: const GameStatus.updated(), question: payload));
+  }
+
+  void answerQuestion(String answer) {
+    socketClient.send(SendingEvent.answerQuestion, {
+      "gameId": state.gameId,
+      "answer": {
+        "userAnswer": answer,
+        "remainingSeconds": 3,
+      }
+    });
   }
 }

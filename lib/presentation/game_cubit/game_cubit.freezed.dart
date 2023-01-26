@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GameState {
-  List<ConnectedUsers> get connectedUsers => throw _privateConstructorUsedError;
+  List<ConnectedUser> get connectedUsers => throw _privateConstructorUsedError;
+  List<Answer> get answers => throw _privateConstructorUsedError;
   String get gameId => throw _privateConstructorUsedError;
   GameStatus get status => throw _privateConstructorUsedError;
   QuestionPayload? get question => throw _privateConstructorUsedError;
@@ -32,7 +33,8 @@ abstract class $GameStateCopyWith<$Res> {
       _$GameStateCopyWithImpl<$Res, GameState>;
   @useResult
   $Res call(
-      {List<ConnectedUsers> connectedUsers,
+      {List<ConnectedUser> connectedUsers,
+      List<Answer> answers,
       String gameId,
       GameStatus status,
       QuestionPayload? question});
@@ -55,6 +57,7 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
   @override
   $Res call({
     Object? connectedUsers = null,
+    Object? answers = null,
     Object? gameId = null,
     Object? status = null,
     Object? question = freezed,
@@ -63,7 +66,11 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
       connectedUsers: null == connectedUsers
           ? _value.connectedUsers
           : connectedUsers // ignore: cast_nullable_to_non_nullable
-              as List<ConnectedUsers>,
+              as List<ConnectedUser>,
+      answers: null == answers
+          ? _value.answers
+          : answers // ignore: cast_nullable_to_non_nullable
+              as List<Answer>,
       gameId: null == gameId
           ? _value.gameId
           : gameId // ignore: cast_nullable_to_non_nullable
@@ -108,7 +115,8 @@ abstract class _$$_GameStateCopyWith<$Res> implements $GameStateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {List<ConnectedUsers> connectedUsers,
+      {List<ConnectedUser> connectedUsers,
+      List<Answer> answers,
       String gameId,
       GameStatus status,
       QuestionPayload? question});
@@ -131,6 +139,7 @@ class __$$_GameStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? connectedUsers = null,
+    Object? answers = null,
     Object? gameId = null,
     Object? status = null,
     Object? question = freezed,
@@ -139,7 +148,11 @@ class __$$_GameStateCopyWithImpl<$Res>
       connectedUsers: null == connectedUsers
           ? _value._connectedUsers
           : connectedUsers // ignore: cast_nullable_to_non_nullable
-              as List<ConnectedUsers>,
+              as List<ConnectedUser>,
+      answers: null == answers
+          ? _value._answers
+          : answers // ignore: cast_nullable_to_non_nullable
+              as List<Answer>,
       gameId: null == gameId
           ? _value.gameId
           : gameId // ignore: cast_nullable_to_non_nullable
@@ -158,21 +171,33 @@ class __$$_GameStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GameState implements _GameState {
+class _$_GameState extends _GameState {
   _$_GameState(
-      {final List<ConnectedUsers> connectedUsers = const [],
+      {final List<ConnectedUser> connectedUsers = const [],
+      final List<Answer> answers = const [],
       this.gameId = '',
       this.status = const GameStatus.initial(),
       this.question})
-      : _connectedUsers = connectedUsers;
+      : _connectedUsers = connectedUsers,
+        _answers = answers,
+        super._();
 
-  final List<ConnectedUsers> _connectedUsers;
+  final List<ConnectedUser> _connectedUsers;
   @override
   @JsonKey()
-  List<ConnectedUsers> get connectedUsers {
+  List<ConnectedUser> get connectedUsers {
     if (_connectedUsers is EqualUnmodifiableListView) return _connectedUsers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_connectedUsers);
+  }
+
+  final List<Answer> _answers;
+  @override
+  @JsonKey()
+  List<Answer> get answers {
+    if (_answers is EqualUnmodifiableListView) return _answers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_answers);
   }
 
   @override
@@ -186,7 +211,7 @@ class _$_GameState implements _GameState {
 
   @override
   String toString() {
-    return 'GameState(connectedUsers: $connectedUsers, gameId: $gameId, status: $status, question: $question)';
+    return 'GameState(connectedUsers: $connectedUsers, answers: $answers, gameId: $gameId, status: $status, question: $question)';
   }
 
   @override
@@ -196,6 +221,7 @@ class _$_GameState implements _GameState {
             other is _$_GameState &&
             const DeepCollectionEquality()
                 .equals(other._connectedUsers, _connectedUsers) &&
+            const DeepCollectionEquality().equals(other._answers, _answers) &&
             (identical(other.gameId, gameId) || other.gameId == gameId) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.question, question) ||
@@ -206,6 +232,7 @@ class _$_GameState implements _GameState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_connectedUsers),
+      const DeepCollectionEquality().hash(_answers),
       gameId,
       status,
       question);
@@ -217,15 +244,19 @@ class _$_GameState implements _GameState {
       __$$_GameStateCopyWithImpl<_$_GameState>(this, _$identity);
 }
 
-abstract class _GameState implements GameState {
+abstract class _GameState extends GameState {
   factory _GameState(
-      {final List<ConnectedUsers> connectedUsers,
+      {final List<ConnectedUser> connectedUsers,
+      final List<Answer> answers,
       final String gameId,
       final GameStatus status,
       final QuestionPayload? question}) = _$_GameState;
+  _GameState._() : super._();
 
   @override
-  List<ConnectedUsers> get connectedUsers;
+  List<ConnectedUser> get connectedUsers;
+  @override
+  List<Answer> get answers;
   @override
   String get gameId;
   @override

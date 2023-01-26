@@ -1,19 +1,19 @@
 class InitialGameState {
-  List<ConnectedUsers>? connectedUsers;
-  ConnectedUsers? admin;
+  List<ConnectedUser>? connectedUsers;
+  ConnectedUser? admin;
   String? gameId;
 
   InitialGameState({this.connectedUsers, this.admin, this.gameId});
 
   InitialGameState.fromJson(Map<String, dynamic> json) {
     if (json['connectedUsers'] != null) {
-      connectedUsers = <ConnectedUsers>[];
+      connectedUsers = <ConnectedUser>[];
       json['connectedUsers'].forEach((v) {
-        connectedUsers!.add(ConnectedUsers.fromJson(v));
+        connectedUsers!.add(ConnectedUser.fromJson(v));
       });
     }
     admin =
-        json['admin'] != null ? ConnectedUsers.fromJson(json['admin']) : null;
+        json['admin'] != null ? ConnectedUser.fromJson(json['admin']) : null;
     gameId = json['gameId'];
   }
 
@@ -29,15 +29,15 @@ class InitialGameState {
   }
 }
 
-class ConnectedUsers {
+class ConnectedUser {
   String id;
   String? imageUrl;
   String name;
 
-  ConnectedUsers({required this.id, this.imageUrl, required this.name});
+  ConnectedUser({required this.id, this.imageUrl, required this.name});
 
-  factory ConnectedUsers.fromJson(Map<String, dynamic> json) {
-    return ConnectedUsers(
+  factory ConnectedUser.fromJson(Map<String, dynamic> json) {
+    return ConnectedUser(
       id: json['id']!,
       imageUrl: json['imageUrl'],
       name: json['name'] ?? 'Game User',

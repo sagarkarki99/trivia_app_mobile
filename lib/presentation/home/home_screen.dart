@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trivia_app/presentation/home/auth_cubit/auth_cubit.dart';
 import 'package:trivia_app/presentation/home/cubit/home_cubit.dart';
 import 'package:trivia_app/presentation/playground/ui/joining_game_screen.dart';
 import 'package:trivia_app/presentation/playground/ui/playground_screen.dart';
@@ -15,7 +16,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider<HomeCubit>(
-        create: (context) => HomeCubit(socketClient: locator<SocketClient>()),
+        create: (context) => HomeCubit(
+            socketClient: locator<SocketClient>(),
+            authCubit: context.read<AuthCubit>()),
         child: const _Body(),
       ),
     );
