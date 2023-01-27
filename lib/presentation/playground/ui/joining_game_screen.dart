@@ -10,7 +10,10 @@ class JoiningGameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: homeCubit,
-      child: const Scaffold(body: _GameIdTextfieldView()),
+      child: Scaffold(
+        appBar: AppBar(title: const Text('JoinGame')),
+        body: const _GameIdTextfieldView(),
+      ),
     );
   }
 }

@@ -32,12 +32,15 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GameCubit, GameState>(
       builder: (context, state) {
-        return state.activeRound == null
-            ? const Text('Waiting for question')
-            : BlocProvider.value(
-                value: state.activeRound!,
-                child: const AnsweringView(),
-              );
+        return Scaffold(
+          appBar: AppBar(title: const Text('Play the game')),
+          body: state.activeRound == null
+              ? const Text('Waiting for question')
+              : BlocProvider.value(
+                  value: state.activeRound!,
+                  child: const AnsweringView(),
+                ),
+        );
       },
     );
   }
