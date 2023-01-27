@@ -15,11 +15,11 @@ class QuestionFormCubit extends Cubit<QuestionFormState> {
   late TextEditingController answer4Controller;
   late GlobalKey<FormState> _formKey;
   QuestionFormCubit() : super(const QuestionFormState.initial()) {
-    questionController = TextEditingController();
-    answer1Controller = TextEditingController();
-    answer2Controller = TextEditingController();
-    answer3Controller = TextEditingController();
-    answer4Controller = TextEditingController();
+    questionController = TextEditingController(text: "What is your name?");
+    answer1Controller = TextEditingController(text: "Nino");
+    answer2Controller = TextEditingController(text: "Sagur");
+    answer3Controller = TextEditingController(text: "Sagar");
+    answer4Controller = TextEditingController(text: "Sagor");
     _formKey = GlobalKey<FormState>();
   }
 

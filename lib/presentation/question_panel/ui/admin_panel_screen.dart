@@ -5,6 +5,7 @@ import 'package:trivia_app/presentation/connected_users/ui/connected_users_ui.da
 import 'package:trivia_app/presentation/game_cubit/game_cubit.dart';
 
 import '../../../di/locator.dart';
+import '../../round/round_cubit.dart';
 import '../question_form/question_form.dart';
 
 class AdminPanelScreen extends StatelessWidget {
@@ -33,8 +34,11 @@ class _Body extends StatelessWidget {
         children: [
           BlocBuilder<GameCubit, GameState>(
             builder: (context, state) {
-              if (state.question != null) {
-                return const QuestionView();
+              if (state.activeRound != null) {
+                return BlocProvider.value(
+                  value: state.activeRound!,
+                  child: const QuestionView(),
+                );
               }
               return Text('GameId: ${context.read<GameCubit>().state.gameId}');
             },
@@ -66,26 +70,47 @@ class QuestionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GameCubit, GameState>(
+    return BlocBuilder<RoundCubit, RoundState>(
       builder: (context, state) {
-        final question = state.question!;
-
+        final question = state.questionPayload;
+        final connectedUsers = context.read<GameCubit>().state.connectedUsers;
         return Column(
           children: [
-            Text(question.question,
-                style: Theme.of(context).textTheme.headline3),
+            Text(
+              question.question,
+              style: Theme.of(context).textTheme.headline3,
+            ),
             const SizedBox(height: 16),
-            ...question.answerOptions
-                .map((e) => Row(
-                      children: [
-                        Text(e),
-                        const SizedBox(width: 6),
-                        Text(state.getUserCountFor(e).toString())
-                      ],
-                    ))
-                .toList()
+            ...question.answerOptions.map((answer) {
+              final answerCount = state.answers
+                  .where((ans) => ans.userAnswer == answer)
+                  .map((e) => e.getUserIn(connectedUsers))
+                  .toList()
+                  .length;
+              return Row(
+                children: [
+                  Text(answer),
+                  const SizedBox(width: 6),
+                  Text(answerCount.toString())
+                ],
+              );
+            }).toList(),
+            const CountDownUi()
           ],
         );
+      },
+    );
+  }
+}
+
+class CountDownUi extends StatelessWidget {
+  const CountDownUi({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<RoundCubit, RoundState>(
+      builder: (context, state) {
+        return Text(
+            'Remaining: ${(state.remainingMilliseconds / 1000).toStringAsFixed(2)}');
       },
     );
   }

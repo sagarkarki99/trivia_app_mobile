@@ -17,10 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$GameState {
   List<ConnectedUser> get connectedUsers => throw _privateConstructorUsedError;
-  List<Answer> get answers => throw _privateConstructorUsedError;
+  RoundCubit? get activeRound => throw _privateConstructorUsedError;
   String get gameId => throw _privateConstructorUsedError;
   GameStatus get status => throw _privateConstructorUsedError;
-  QuestionPayload? get question => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GameStateCopyWith<GameState> get copyWith =>
@@ -34,13 +33,11 @@ abstract class $GameStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<ConnectedUser> connectedUsers,
-      List<Answer> answers,
+      RoundCubit? activeRound,
       String gameId,
-      GameStatus status,
-      QuestionPayload? question});
+      GameStatus status});
 
   $GameStatusCopyWith<$Res> get status;
-  $QuestionPayloadCopyWith<$Res>? get question;
 }
 
 /// @nodoc
@@ -57,20 +54,19 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
   @override
   $Res call({
     Object? connectedUsers = null,
-    Object? answers = null,
+    Object? activeRound = freezed,
     Object? gameId = null,
     Object? status = null,
-    Object? question = freezed,
   }) {
     return _then(_value.copyWith(
       connectedUsers: null == connectedUsers
           ? _value.connectedUsers
           : connectedUsers // ignore: cast_nullable_to_non_nullable
               as List<ConnectedUser>,
-      answers: null == answers
-          ? _value.answers
-          : answers // ignore: cast_nullable_to_non_nullable
-              as List<Answer>,
+      activeRound: freezed == activeRound
+          ? _value.activeRound
+          : activeRound // ignore: cast_nullable_to_non_nullable
+              as RoundCubit?,
       gameId: null == gameId
           ? _value.gameId
           : gameId // ignore: cast_nullable_to_non_nullable
@@ -79,10 +75,6 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as GameStatus,
-      question: freezed == question
-          ? _value.question
-          : question // ignore: cast_nullable_to_non_nullable
-              as QuestionPayload?,
     ) as $Val);
   }
 
@@ -91,18 +83,6 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
   $GameStatusCopyWith<$Res> get status {
     return $GameStatusCopyWith<$Res>(_value.status, (value) {
       return _then(_value.copyWith(status: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $QuestionPayloadCopyWith<$Res>? get question {
-    if (_value.question == null) {
-      return null;
-    }
-
-    return $QuestionPayloadCopyWith<$Res>(_value.question!, (value) {
-      return _then(_value.copyWith(question: value) as $Val);
     });
   }
 }
@@ -116,15 +96,12 @@ abstract class _$$_GameStateCopyWith<$Res> implements $GameStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<ConnectedUser> connectedUsers,
-      List<Answer> answers,
+      RoundCubit? activeRound,
       String gameId,
-      GameStatus status,
-      QuestionPayload? question});
+      GameStatus status});
 
   @override
   $GameStatusCopyWith<$Res> get status;
-  @override
-  $QuestionPayloadCopyWith<$Res>? get question;
 }
 
 /// @nodoc
@@ -139,20 +116,19 @@ class __$$_GameStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? connectedUsers = null,
-    Object? answers = null,
+    Object? activeRound = freezed,
     Object? gameId = null,
     Object? status = null,
-    Object? question = freezed,
   }) {
     return _then(_$_GameState(
       connectedUsers: null == connectedUsers
           ? _value._connectedUsers
           : connectedUsers // ignore: cast_nullable_to_non_nullable
               as List<ConnectedUser>,
-      answers: null == answers
-          ? _value._answers
-          : answers // ignore: cast_nullable_to_non_nullable
-              as List<Answer>,
+      activeRound: freezed == activeRound
+          ? _value.activeRound
+          : activeRound // ignore: cast_nullable_to_non_nullable
+              as RoundCubit?,
       gameId: null == gameId
           ? _value.gameId
           : gameId // ignore: cast_nullable_to_non_nullable
@@ -161,10 +137,6 @@ class __$$_GameStateCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as GameStatus,
-      question: freezed == question
-          ? _value.question
-          : question // ignore: cast_nullable_to_non_nullable
-              as QuestionPayload?,
     ));
   }
 }
@@ -174,12 +146,10 @@ class __$$_GameStateCopyWithImpl<$Res>
 class _$_GameState extends _GameState {
   _$_GameState(
       {final List<ConnectedUser> connectedUsers = const [],
-      final List<Answer> answers = const [],
+      this.activeRound,
       this.gameId = '',
-      this.status = const GameStatus.initial(),
-      this.question})
+      this.status = const GameStatus.initial()})
       : _connectedUsers = connectedUsers,
-        _answers = answers,
         super._();
 
   final List<ConnectedUser> _connectedUsers;
@@ -191,27 +161,18 @@ class _$_GameState extends _GameState {
     return EqualUnmodifiableListView(_connectedUsers);
   }
 
-  final List<Answer> _answers;
   @override
-  @JsonKey()
-  List<Answer> get answers {
-    if (_answers is EqualUnmodifiableListView) return _answers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_answers);
-  }
-
+  final RoundCubit? activeRound;
   @override
   @JsonKey()
   final String gameId;
   @override
   @JsonKey()
   final GameStatus status;
-  @override
-  final QuestionPayload? question;
 
   @override
   String toString() {
-    return 'GameState(connectedUsers: $connectedUsers, answers: $answers, gameId: $gameId, status: $status, question: $question)';
+    return 'GameState(connectedUsers: $connectedUsers, activeRound: $activeRound, gameId: $gameId, status: $status)';
   }
 
   @override
@@ -221,21 +182,19 @@ class _$_GameState extends _GameState {
             other is _$_GameState &&
             const DeepCollectionEquality()
                 .equals(other._connectedUsers, _connectedUsers) &&
-            const DeepCollectionEquality().equals(other._answers, _answers) &&
+            (identical(other.activeRound, activeRound) ||
+                other.activeRound == activeRound) &&
             (identical(other.gameId, gameId) || other.gameId == gameId) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.question, question) ||
-                other.question == question));
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_connectedUsers),
-      const DeepCollectionEquality().hash(_answers),
+      activeRound,
       gameId,
-      status,
-      question);
+      status);
 
   @JsonKey(ignore: true)
   @override
@@ -247,22 +206,19 @@ class _$_GameState extends _GameState {
 abstract class _GameState extends GameState {
   factory _GameState(
       {final List<ConnectedUser> connectedUsers,
-      final List<Answer> answers,
+      final RoundCubit? activeRound,
       final String gameId,
-      final GameStatus status,
-      final QuestionPayload? question}) = _$_GameState;
+      final GameStatus status}) = _$_GameState;
   _GameState._() : super._();
 
   @override
   List<ConnectedUser> get connectedUsers;
   @override
-  List<Answer> get answers;
+  RoundCubit? get activeRound;
   @override
   String get gameId;
   @override
   GameStatus get status;
-  @override
-  QuestionPayload? get question;
   @override
   @JsonKey(ignore: true)
   _$$_GameStateCopyWith<_$_GameState> get copyWith =>

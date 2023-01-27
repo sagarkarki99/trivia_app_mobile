@@ -4,24 +4,12 @@ part of 'game_cubit.dart';
 class GameState with _$GameState {
   factory GameState({
     @Default([]) List<ConnectedUser> connectedUsers,
-    @Default([]) List<Answer> answers,
+    RoundCubit? activeRound,
     @Default('') String gameId,
     @Default(GameStatus.initial()) GameStatus status,
-    QuestionPayload? question,
   }) = _GameState;
 
   GameState._();
-
-  int getUserCountFor(String answer) {
-    return getUsersFor(answer).length;
-  }
-
-  List<ConnectedUser> getUsersFor(String answer) {
-    return answers
-        .where((ans) => ans.userAnswer == answer)
-        .map((e) => e.getUserIn(connectedUsers))
-        .toList();
-  }
 }
 
 @freezed

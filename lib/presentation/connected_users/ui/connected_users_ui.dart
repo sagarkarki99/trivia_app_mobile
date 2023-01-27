@@ -12,9 +12,9 @@ class ConnectedUsersUi extends StatelessWidget {
       builder: (context, state) {
         final users = state.connectedUsers;
         if (users.isEmpty) return const Text('Waiting for users...');
-        return AnimatedList(
-          itemBuilder: (context, index, animation) => Text(users[index].name),
-          initialItemCount: users.length,
+        return ListView.builder(
+          itemCount: users.length,
+          itemBuilder: ((context, index) => Text(users[index].name)),
         );
       },
     );

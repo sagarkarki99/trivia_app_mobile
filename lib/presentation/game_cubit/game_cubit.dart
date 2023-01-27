@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:trivia_app/data/socket_client.dart';
-import '../../models/answer.dart';
+import 'package:trivia_app/presentation/round/round_cubit.dart';
 import '../../models/game_state.dart' as game_state;
 import '../../models/game_state.dart';
 import '../../models/question_payload.dart';
@@ -47,17 +47,16 @@ class GameCubit extends Cubit<GameState> {
     });
 
     socketClient.recieveOn(RecievingEvent.questionAsked, (payload) {
-      emit(state.copyWith(
-          status: const GameStatus.updated(),
-          question: QuestionPayload.fromJson(payload as Map<String, dynamic>)));
-    });
-
-    socketClient.recieveOn(RecievingEvent.newAnswerSubmitted, (payload) {
+      final questionPayload =
+          QuestionPayload.fromJson(payload as Map<String, dynamic>);
       emit(
         state.copyWith(
           status: const GameStatus.updated(),
-          answers: List.of(state.answers)
-            ..add(Answer.fromJson(payload as Map<String, dynamic>)),
+          activeRound: RoundCubit(
+            client: socketClient,
+            gameId: state.gameId,
+            questionPayload: questionPayload,
+          ),
         ),
       );
     });
@@ -71,16 +70,8 @@ class GameCubit extends Cubit<GameState> {
         "questionPayload": payload,
       },
     );
-    emit(state.copyWith(status: const GameStatus.updated(), question: payload));
-  }
-
-  void answerQuestion(String answer) {
-    socketClient.send(SendingEvent.answerQuestion, {
-      "gameId": state.gameId,
-      "answer": {
-        "userAnswer": answer,
-        "remainingSeconds": 3,
-      }
-    });
+    emit(state.copyWith(
+      status: const GameStatus.updated(),
+    ));
   }
 }
