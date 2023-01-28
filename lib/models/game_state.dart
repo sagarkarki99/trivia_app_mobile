@@ -1,18 +1,20 @@
-class GameState {
-  List<ConnectedUsers>? connectedUsers;
-  ConnectedUsers? admin;
+class InitialGameState {
+  List<ConnectedUser>? connectedUsers;
+  ConnectedUser? admin;
+  String? gameId;
 
-  GameState({this.connectedUsers, this.admin});
+  InitialGameState({this.connectedUsers, this.admin, this.gameId});
 
-  GameState.fromJson(Map<String, dynamic> json) {
+  InitialGameState.fromJson(Map<String, dynamic> json) {
     if (json['connectedUsers'] != null) {
-      connectedUsers = <ConnectedUsers>[];
+      connectedUsers = <ConnectedUser>[];
       json['connectedUsers'].forEach((v) {
-        connectedUsers!.add(ConnectedUsers.fromJson(v));
+        connectedUsers!.add(ConnectedUser.fromJson(v));
       });
     }
     admin =
-        json['admin'] != null ? ConnectedUsers.fromJson(json['admin']) : null;
+        json['admin'] != null ? ConnectedUser.fromJson(json['admin']) : null;
+    gameId = json['gameId'];
   }
 
   Map<String, dynamic> toJson() {
@@ -27,17 +29,19 @@ class GameState {
   }
 }
 
-class ConnectedUsers {
-  String? id;
+class ConnectedUser {
+  String id;
   String? imageUrl;
-  String? name;
+  String name;
 
-  ConnectedUsers({this.id, this.imageUrl, this.name});
+  ConnectedUser({required this.id, this.imageUrl, required this.name});
 
-  ConnectedUsers.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    imageUrl = json['imageUrl'];
-    name = json['name'];
+  factory ConnectedUser.fromJson(Map<String, dynamic> json) {
+    return ConnectedUser(
+      id: json['id']!,
+      imageUrl: json['imageUrl'],
+      name: json['name'] ?? 'Game User',
+    );
   }
 
   Map<String, dynamic> toJson() {
