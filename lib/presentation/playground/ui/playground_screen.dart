@@ -30,7 +30,17 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GameCubit, GameState>(
+    return BlocConsumer<GameCubit, GameState>(
+      listener: ((context, state) {
+        if (state.status is GameFinished) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Admin finished the game'),
+            ),
+          );
+          Navigator.of(context).popUntil((route) => route.isFirst);
+        }
+      }),
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(title: const Text('Play the game')),

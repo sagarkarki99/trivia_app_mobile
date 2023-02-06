@@ -4,7 +4,7 @@ class SocketClientImpl implements SocketClient {
   late IO.Socket socket;
   SocketClientImpl() {
     socket = IO.io(
-        'https://766e-110-44-125-12.ap.ngrok.io',
+        'http://localhost:3001',
         IO.OptionBuilder()
             .setTransports(['websocket']) // for Flutter or Dart VM
             .disableAutoConnect() // disable auto-connection
@@ -45,6 +45,8 @@ class SendingEvent {
   static String askQuestion = 'askQuestion';
 
   static String answerQuestion = 'answerQuestion';
+
+  static String finishGame = 'finishGame';
 }
 
 class RecievingEvent {
