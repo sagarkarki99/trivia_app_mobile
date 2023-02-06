@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:trivia_app/data/socket_client.dart';
@@ -60,6 +62,14 @@ class GameCubit extends Cubit<GameState> {
         ),
       );
     });
+
+    socketClient.recieveOn(
+      RecievingEvent.gameFinished,
+      (message) {
+        log(message.toString());
+        emit(state.copyWith(status: const GameStatus.gameFinished()));
+      },
+    );
   }
 
   void askQuestion(QuestionPayload payload) {
@@ -73,5 +83,9 @@ class GameCubit extends Cubit<GameState> {
     emit(state.copyWith(
       status: const GameStatus.updated(),
     ));
+  }
+
+  void finishGame() {
+    socketClient.send(SendingEvent.finishGame, state.gameId);
   }
 }

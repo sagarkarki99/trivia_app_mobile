@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/data/socket_client.dart';
 import 'package:trivia_app/presentation/connected_users/ui/connected_users_ui.dart';
 import 'package:trivia_app/presentation/game_cubit/game_cubit.dart';
+import 'package:trivia_app/presentation/question_panel/ui/finish_button.dart';
 
 import '../../../di/locator.dart';
 import '../../round/round_cubit.dart';
@@ -32,7 +33,17 @@ class _Body extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          BlocBuilder<GameCubit, GameState>(
+          BlocConsumer<GameCubit, GameState>(
+            listener: ((context, state) {
+              if (state.status is GameFinished) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Game finished.'),
+                  ),
+                );
+                Navigator.of(context).popUntil((route) => route.isFirst);
+              }
+            }),
             builder: (context, state) {
               if (state.activeRound != null) {
                 return BlocProvider.value(
@@ -57,6 +68,7 @@ class _Body extends StatelessWidget {
             },
             child: const Text('Ask New Question'),
           ),
+          const FinishButton(),
           const Text('Connected Users'),
           const Expanded(child: ConnectedUsersUi()),
         ],
