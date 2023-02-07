@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/presentation/home/auth_cubit/auth_cubit.dart';
 import 'package:trivia_app/presentation/home/home_screen.dart';
+import 'package:trivia_app/presentation/ui_config/app_theme.dart';
 
 class TriviaApp extends StatelessWidget {
   const TriviaApp({super.key});
@@ -12,9 +13,7 @@ class TriviaApp extends StatelessWidget {
       create: (context) => AuthCubit(),
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: AppTheme.light,
         home: const HomeScreen(),
       ),
     );
