@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../game_cubit/game_cubit.dart';
+import '../../cubit/game_cubit.dart';
 
 class ConnectedUsersUi extends StatelessWidget {
   const ConnectedUsersUi({super.key});

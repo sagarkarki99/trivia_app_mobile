@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/models/game_state.dart';
-import 'package:trivia_app/presentation/question_panel/ui/admin_panel_screen.dart';
+import 'package:trivia_app/presentation/game/cubit/game_cubit.dart';
+import 'package:trivia_app/presentation/game/round_cubit/round_cubit.dart';
+import 'package:trivia_app/presentation/game/ui/widgets/question_view.dart';
 
-import '../../../data/socket_client.dart';
-import '../../../di/locator.dart';
-import '../../game_cubit/game_cubit.dart';
-import '../../round/round_cubit.dart';
+import '../../../../data/socket_client.dart';
+import '../../../../di/locator.dart';
 
 class PlaygroundScreen extends StatelessWidget {
   final InitialGameState initialState;

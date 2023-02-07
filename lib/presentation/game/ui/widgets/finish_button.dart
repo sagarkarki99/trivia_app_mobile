@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trivia_app/presentation/game_cubit/game_cubit.dart';
+import 'package:trivia_app/presentation/game/cubit/game_cubit.dart';
 
 class FinishButton extends StatelessWidget {
   const FinishButton({super.key});

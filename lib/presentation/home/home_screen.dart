@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/presentation/home/auth_cubit/auth_cubit.dart';
 import 'package:trivia_app/presentation/home/cubit/home_cubit.dart';
-import 'package:trivia_app/presentation/playground/ui/joining_game_screen.dart';
-import 'package:trivia_app/presentation/playground/ui/playground_screen.dart';
-import 'package:trivia_app/presentation/question_panel/ui/admin_panel_screen.dart';
+import 'package:trivia_app/presentation/game/ui/screens/joining_game_screen.dart';
+import 'package:trivia_app/presentation/game/ui/screens/playground_screen.dart';
+import 'package:trivia_app/presentation/game/ui/screens/admin_panel_screen.dart';
 
 import '../../data/socket_client.dart';
 import '../../di/locator.dart';
