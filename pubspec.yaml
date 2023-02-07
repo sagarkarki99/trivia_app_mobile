@@ -21,6 +21,7 @@ dependencies:
   json_serializable: ^6.6.0
   theme_tailor_annotation: ^1.0.3
   qr_flutter: ^4.0.0
+  mobile_scanner: ^2.1.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
