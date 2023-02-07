@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/data/socket_client.dart';
 import 'package:trivia_app/presentation/game/cubit/game_cubit.dart';
+import 'package:trivia_app/presentation/game/ui/screens/sharing_game_screen.dart';
 import 'package:trivia_app/presentation/game/ui/widgets/connected_users_ui.dart';
 
 import 'package:trivia_app/presentation/game/ui/widgets/finish_button.dart';
@@ -69,6 +70,17 @@ class _Body extends StatelessWidget {
             },
             child: const Text('Ask New Question'),
           ),
+          ElevatedButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (ctx) => BlocProvider.value(
+                    value: context.read<GameCubit>(),
+                    child: const SharingGameScreen(),
+                  ),
+                );
+              },
+              child: const Text('Share')),
           const FinishButton(),
           const Text('Connected Users'),
           const Expanded(child: ConnectedUsersUi()),
