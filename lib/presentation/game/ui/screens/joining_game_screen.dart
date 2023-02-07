@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/presentation/home/cubit/home_cubit.dart';
 
+import '../widgets/game_id_scanner.dart';
+
 class JoiningGameScreen extends StatelessWidget {
   final HomeCubit homeCubit;
   const JoiningGameScreen({super.key, required this.homeCubit});
@@ -12,7 +14,7 @@ class JoiningGameScreen extends StatelessWidget {
       value: homeCubit,
       child: Scaffold(
         appBar: AppBar(title: const Text('JoinGame')),
-        body: const _GameIdTextfieldView(),
+        body: const GameIdScanner(),
       ),
     );
   }
