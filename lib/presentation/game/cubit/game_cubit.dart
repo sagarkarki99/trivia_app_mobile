@@ -3,10 +3,11 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:trivia_app/data/socket_client.dart';
-import 'package:trivia_app/presentation/round/round_cubit.dart';
-import '../../models/game_state.dart' as game_state;
-import '../../models/game_state.dart';
-import '../../models/question_payload.dart';
+import 'package:trivia_app/models/game_state.dart' as game_state;
+import 'package:trivia_app/models/question_payload.dart';
+import 'package:trivia_app/presentation/game/round_cubit/round_cubit.dart';
+
+import '../../../models/game_state.dart';
 
 part 'game_state.dart';
 part 'game_cubit.freezed.dart';

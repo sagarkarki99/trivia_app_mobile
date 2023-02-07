@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trivia_app/presentation/question_panel/question_form/cubit/question_form_cubit.dart';
+import 'package:trivia_app/presentation/question_form/cubit/question_form_cubit.dart';
 
 import '../../../models/question_payload.dart';
 

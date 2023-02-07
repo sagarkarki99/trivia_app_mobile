@@ -3,9 +3,8 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:trivia_app/data/socket_client.dart';
+import 'package:trivia_app/models/answer.dart';
 import 'package:trivia_app/models/question_payload.dart';
-
-import '../../models/answer.dart';
 
 part 'round_state.dart';
 part 'round_cubit.freezed.dart';
