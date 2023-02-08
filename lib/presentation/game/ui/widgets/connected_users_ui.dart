@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trivia_app/presentation/game/ui/widgets/user_avatar.dart';
+import 'package:trivia_app/presentation/ui_config/animations/animations.dart';
+import 'package:trivia_app/presentation/ui_config/app_colors.dart';
 
 import '../../cubit/game_cubit.dart';
 
@@ -8,15 +11,43 @@ class ConnectedUsersUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GameCubit, GameState>(
-      builder: (context, state) {
-        final users = state.connectedUsers;
-        if (users.isEmpty) return const Text('Waiting for users...');
-        return ListView.builder(
-          itemCount: users.length,
-          itemBuilder: ((context, index) => Text(users[index].name)),
-        );
-      },
+    final users = context.watch<GameCubit>().state.connectedUsers;
+    return users.isEmpty
+        ? const Text('Waiting players to join.')
+        : AnimatedList(
+            key: context.read<GameCubit>().connectedUserListKey,
+            initialItemCount: users.length,
+            itemBuilder: ((context, index, animation) => ScaleAnimation(
+                  key: ValueKey(index),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: UserItem(name: users[0].name),
+                  ),
+                )),
+          );
+  }
+}
+
+class UserItem extends StatelessWidget {
+  final String name;
+  const UserItem({super.key, required this.name});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12.0),
+        color: AppColors.light.background,
+      ),
+      child: ListTile(
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+        minVerticalPadding: 14,
+        visualDensity: VisualDensity.compact,
+        dense: true,
+        leading: UserAvatar(username: name),
+        title: Text(name),
+      ),
     );
   }
 }

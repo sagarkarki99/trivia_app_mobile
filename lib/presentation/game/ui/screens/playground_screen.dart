@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/models/game_state.dart';
 import 'package:trivia_app/presentation/game/cubit/game_cubit.dart';
 import 'package:trivia_app/presentation/game/round_cubit/round_cubit.dart';
+import 'package:trivia_app/presentation/game/ui/widgets/connected_users_ui.dart';
 import 'package:trivia_app/presentation/game/ui/widgets/question_view.dart';
 
 import '../../../../data/socket_client.dart';
@@ -45,7 +46,7 @@ class _Body extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(title: const Text('Play the game')),
           body: state.activeRound == null
-              ? const Text('Waiting for question')
+              ? const ConnectedUsersUi()
               : BlocProvider.value(
                   value: state.activeRound!,
                   child: const AnsweringView(),
