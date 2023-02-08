@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:trivia_app/data/socket_client.dart';
@@ -14,11 +13,13 @@ part 'game_cubit.freezed.dart';
 
 class GameCubit extends Cubit<GameState> {
   SocketClient socketClient;
+  late GlobalKey<AnimatedListState> connectedUserListKey;
   GameCubit({
     required this.socketClient,
     required String gameId,
     List<ConnectedUser>? connectedUsers,
   }) : super(GameState(gameId: gameId, connectedUsers: connectedUsers ?? [])) {
+    connectedUserListKey = GlobalKey<AnimatedListState>();
     _listenToEvents();
   }
 
@@ -43,9 +44,10 @@ class GameCubit extends Cubit<GameState> {
 
     socketClient.recieveOn(RecievingEvent.newUserJoined, (data) {
       final user = ConnectedUser.fromJson(data as Map<String, dynamic>);
+      connectedUserListKey.currentState?.insertItem(0);
       emit(state.copyWith(
         status: const GameStatus.updated(),
-        connectedUsers: List.of(state.connectedUsers)..add(user),
+        connectedUsers: List.of(state.connectedUsers)..insert(0, user),
       ));
     });
 
@@ -67,7 +69,6 @@ class GameCubit extends Cubit<GameState> {
     socketClient.recieveOn(
       RecievingEvent.gameFinished,
       (message) {
-        log(message.toString());
         emit(state.copyWith(status: const GameStatus.gameFinished()));
       },
     );

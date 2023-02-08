@@ -17,10 +17,12 @@ class AdminPanelScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          GameCubit(socketClient: locator<SocketClient>(), gameId: gameId),
-      child: const _Body(),
+    return SafeArea(
+      child: BlocProvider(
+        create: (context) =>
+            GameCubit(socketClient: locator<SocketClient>(), gameId: gameId),
+        child: const _Body(),
+      ),
     );
   }
 }
