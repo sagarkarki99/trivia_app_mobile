@@ -37,7 +37,7 @@ class UserItem extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.0),
-        color: AppColors.light.background,
+        color: AppColors.light.grey,
       ),
       child: ListTile(
         contentPadding:
