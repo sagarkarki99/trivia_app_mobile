@@ -47,8 +47,7 @@ class CountDownUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<RoundCubit, RoundState>(
       builder: (context, state) {
-        return Text(
-            'Remaining: ${(state.remainingMilliseconds / 1000).toStringAsFixed(2)}');
+        return Text(state.remainingSeconds.toStringAsFixed(2));
       },
     );
   }
