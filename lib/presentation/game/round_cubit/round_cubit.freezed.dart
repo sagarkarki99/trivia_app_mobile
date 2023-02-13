@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RoundState {
   RoundStatus get status => throw _privateConstructorUsedError;
   List<Answer> get answers => throw _privateConstructorUsedError;
+  String get selectedAnswer => throw _privateConstructorUsedError;
   QuestionPayload get questionPayload => throw _privateConstructorUsedError;
   int get remainingMilliseconds => throw _privateConstructorUsedError;
 
@@ -35,6 +36,7 @@ abstract class $RoundStateCopyWith<$Res> {
   $Res call(
       {RoundStatus status,
       List<Answer> answers,
+      String selectedAnswer,
       QuestionPayload questionPayload,
       int remainingMilliseconds});
 
@@ -57,6 +59,7 @@ class _$RoundStateCopyWithImpl<$Res, $Val extends RoundState>
   $Res call({
     Object? status = null,
     Object? answers = null,
+    Object? selectedAnswer = null,
     Object? questionPayload = null,
     Object? remainingMilliseconds = null,
   }) {
@@ -69,6 +72,10 @@ class _$RoundStateCopyWithImpl<$Res, $Val extends RoundState>
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<Answer>,
+      selectedAnswer: null == selectedAnswer
+          ? _value.selectedAnswer
+          : selectedAnswer // ignore: cast_nullable_to_non_nullable
+              as String,
       questionPayload: null == questionPayload
           ? _value.questionPayload
           : questionPayload // ignore: cast_nullable_to_non_nullable
@@ -108,6 +115,7 @@ abstract class _$$_RoundStateCopyWith<$Res>
   $Res call(
       {RoundStatus status,
       List<Answer> answers,
+      String selectedAnswer,
       QuestionPayload questionPayload,
       int remainingMilliseconds});
 
@@ -130,6 +138,7 @@ class __$$_RoundStateCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? answers = null,
+    Object? selectedAnswer = null,
     Object? questionPayload = null,
     Object? remainingMilliseconds = null,
   }) {
@@ -142,6 +151,10 @@ class __$$_RoundStateCopyWithImpl<$Res>
           ? _value._answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<Answer>,
+      selectedAnswer: null == selectedAnswer
+          ? _value.selectedAnswer
+          : selectedAnswer // ignore: cast_nullable_to_non_nullable
+              as String,
       questionPayload: null == questionPayload
           ? _value.questionPayload
           : questionPayload // ignore: cast_nullable_to_non_nullable
@@ -156,13 +169,15 @@ class __$$_RoundStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RoundState implements _RoundState {
+class _$_RoundState extends _RoundState {
   const _$_RoundState(
       {this.status = const RoundStatus.initial(),
       final List<Answer> answers = const [],
+      this.selectedAnswer = '',
       required this.questionPayload,
       required this.remainingMilliseconds})
-      : _answers = answers;
+      : _answers = answers,
+        super._();
 
   @override
   @JsonKey()
@@ -177,13 +192,16 @@ class _$_RoundState implements _RoundState {
   }
 
   @override
+  @JsonKey()
+  final String selectedAnswer;
+  @override
   final QuestionPayload questionPayload;
   @override
   final int remainingMilliseconds;
 
   @override
   String toString() {
-    return 'RoundState(status: $status, answers: $answers, questionPayload: $questionPayload, remainingMilliseconds: $remainingMilliseconds)';
+    return 'RoundState(status: $status, answers: $answers, selectedAnswer: $selectedAnswer, questionPayload: $questionPayload, remainingMilliseconds: $remainingMilliseconds)';
   }
 
   @override
@@ -193,6 +211,8 @@ class _$_RoundState implements _RoundState {
             other is _$_RoundState &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._answers, _answers) &&
+            (identical(other.selectedAnswer, selectedAnswer) ||
+                other.selectedAnswer == selectedAnswer) &&
             (identical(other.questionPayload, questionPayload) ||
                 other.questionPayload == questionPayload) &&
             (identical(other.remainingMilliseconds, remainingMilliseconds) ||
@@ -204,6 +224,7 @@ class _$_RoundState implements _RoundState {
       runtimeType,
       status,
       const DeepCollectionEquality().hash(_answers),
+      selectedAnswer,
       questionPayload,
       remainingMilliseconds);
 
@@ -214,17 +235,21 @@ class _$_RoundState implements _RoundState {
       __$$_RoundStateCopyWithImpl<_$_RoundState>(this, _$identity);
 }
 
-abstract class _RoundState implements RoundState {
+abstract class _RoundState extends RoundState {
   const factory _RoundState(
       {final RoundStatus status,
       final List<Answer> answers,
+      final String selectedAnswer,
       required final QuestionPayload questionPayload,
       required final int remainingMilliseconds}) = _$_RoundState;
+  const _RoundState._() : super._();
 
   @override
   RoundStatus get status;
   @override
   List<Answer> get answers;
+  @override
+  String get selectedAnswer;
   @override
   QuestionPayload get questionPayload;
   @override
