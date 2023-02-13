@@ -5,6 +5,7 @@ class SocketClientImpl implements SocketClient {
   SocketClientImpl() {
     socket = IO.io(
         'http://192.168.0.108:3001',
+        // 'http://172.16.10.62:3001',
         IO.OptionBuilder()
             .setTransports(['websocket']) // for Flutter or Dart VM
             .disableAutoConnect() // disable auto-connection
