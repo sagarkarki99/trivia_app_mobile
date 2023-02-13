@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
 import 'package:trivia_app/presentation/ui_config/theme_extensions.dart';
 
+import 'app_colors.dart';
+
 part 'text_styles.tailor.dart';
 
 @Tailor(
@@ -11,6 +13,7 @@ part 'text_styles.tailor.dart';
 class _$TextStyles {
   static final _base = TextStyle(
     fontFamily: FontNames.quicksand,
+    color: AppColors.light.dark,
   );
 
   static final headline1 = [_base.copyWith(fontSize: 24.0).semiBold];
