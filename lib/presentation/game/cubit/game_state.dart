@@ -19,5 +19,6 @@ class GameStatus with _$GameStatus {
   const factory GameStatus.gameCreated() = GameCreated;
   const factory GameStatus.gameJoined() = GameJoined;
   const factory GameStatus.updated() = Updated;
+  const factory GameStatus.userLeft(String message) = UserLeft;
   const factory GameStatus.gameFinished() = GameFinished;
 }

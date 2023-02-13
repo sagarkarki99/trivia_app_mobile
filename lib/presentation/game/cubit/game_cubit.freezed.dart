@@ -234,6 +234,7 @@ mixin _$GameStatus {
     required TResult Function() gameCreated,
     required TResult Function() gameJoined,
     required TResult Function() updated,
+    required TResult Function(String message) userLeft,
     required TResult Function() gameFinished,
   }) =>
       throw _privateConstructorUsedError;
@@ -244,6 +245,7 @@ mixin _$GameStatus {
     TResult? Function()? gameCreated,
     TResult? Function()? gameJoined,
     TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
     TResult? Function()? gameFinished,
   }) =>
       throw _privateConstructorUsedError;
@@ -254,6 +256,7 @@ mixin _$GameStatus {
     TResult Function()? gameCreated,
     TResult Function()? gameJoined,
     TResult Function()? updated,
+    TResult Function(String message)? userLeft,
     TResult Function()? gameFinished,
     required TResult orElse(),
   }) =>
@@ -265,6 +268,7 @@ mixin _$GameStatus {
     required TResult Function(GameCreated value) gameCreated,
     required TResult Function(GameJoined value) gameJoined,
     required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
     required TResult Function(GameFinished value) gameFinished,
   }) =>
       throw _privateConstructorUsedError;
@@ -275,6 +279,7 @@ mixin _$GameStatus {
     TResult? Function(GameCreated value)? gameCreated,
     TResult? Function(GameJoined value)? gameJoined,
     TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
     TResult? Function(GameFinished value)? gameFinished,
   }) =>
       throw _privateConstructorUsedError;
@@ -285,6 +290,7 @@ mixin _$GameStatus {
     TResult Function(GameCreated value)? gameCreated,
     TResult Function(GameJoined value)? gameJoined,
     TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
     TResult Function(GameFinished value)? gameFinished,
     required TResult orElse(),
   }) =>
@@ -351,6 +357,7 @@ class _$_Initial implements _Initial {
     required TResult Function() gameCreated,
     required TResult Function() gameJoined,
     required TResult Function() updated,
+    required TResult Function(String message) userLeft,
     required TResult Function() gameFinished,
   }) {
     return initial();
@@ -364,6 +371,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? gameCreated,
     TResult? Function()? gameJoined,
     TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
     TResult? Function()? gameFinished,
   }) {
     return initial?.call();
@@ -377,6 +385,7 @@ class _$_Initial implements _Initial {
     TResult Function()? gameCreated,
     TResult Function()? gameJoined,
     TResult Function()? updated,
+    TResult Function(String message)? userLeft,
     TResult Function()? gameFinished,
     required TResult orElse(),
   }) {
@@ -394,6 +403,7 @@ class _$_Initial implements _Initial {
     required TResult Function(GameCreated value) gameCreated,
     required TResult Function(GameJoined value) gameJoined,
     required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
     required TResult Function(GameFinished value) gameFinished,
   }) {
     return initial(this);
@@ -407,6 +417,7 @@ class _$_Initial implements _Initial {
     TResult? Function(GameCreated value)? gameCreated,
     TResult? Function(GameJoined value)? gameJoined,
     TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
     TResult? Function(GameFinished value)? gameFinished,
   }) {
     return initial?.call(this);
@@ -420,6 +431,7 @@ class _$_Initial implements _Initial {
     TResult Function(GameCreated value)? gameCreated,
     TResult Function(GameJoined value)? gameJoined,
     TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
     TResult Function(GameFinished value)? gameFinished,
     required TResult orElse(),
   }) {
@@ -501,6 +513,7 @@ class _$Loading implements Loading {
     required TResult Function() gameCreated,
     required TResult Function() gameJoined,
     required TResult Function() updated,
+    required TResult Function(String message) userLeft,
     required TResult Function() gameFinished,
   }) {
     return loading(message);
@@ -514,6 +527,7 @@ class _$Loading implements Loading {
     TResult? Function()? gameCreated,
     TResult? Function()? gameJoined,
     TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
     TResult? Function()? gameFinished,
   }) {
     return loading?.call(message);
@@ -527,6 +541,7 @@ class _$Loading implements Loading {
     TResult Function()? gameCreated,
     TResult Function()? gameJoined,
     TResult Function()? updated,
+    TResult Function(String message)? userLeft,
     TResult Function()? gameFinished,
     required TResult orElse(),
   }) {
@@ -544,6 +559,7 @@ class _$Loading implements Loading {
     required TResult Function(GameCreated value) gameCreated,
     required TResult Function(GameJoined value) gameJoined,
     required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
     required TResult Function(GameFinished value) gameFinished,
   }) {
     return loading(this);
@@ -557,6 +573,7 @@ class _$Loading implements Loading {
     TResult? Function(GameCreated value)? gameCreated,
     TResult? Function(GameJoined value)? gameJoined,
     TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
     TResult? Function(GameFinished value)? gameFinished,
   }) {
     return loading?.call(this);
@@ -570,6 +587,7 @@ class _$Loading implements Loading {
     TResult Function(GameCreated value)? gameCreated,
     TResult Function(GameJoined value)? gameJoined,
     TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
     TResult Function(GameFinished value)? gameFinished,
     required TResult orElse(),
   }) {
@@ -632,6 +650,7 @@ class _$GameCreated implements GameCreated {
     required TResult Function() gameCreated,
     required TResult Function() gameJoined,
     required TResult Function() updated,
+    required TResult Function(String message) userLeft,
     required TResult Function() gameFinished,
   }) {
     return gameCreated();
@@ -645,6 +664,7 @@ class _$GameCreated implements GameCreated {
     TResult? Function()? gameCreated,
     TResult? Function()? gameJoined,
     TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
     TResult? Function()? gameFinished,
   }) {
     return gameCreated?.call();
@@ -658,6 +678,7 @@ class _$GameCreated implements GameCreated {
     TResult Function()? gameCreated,
     TResult Function()? gameJoined,
     TResult Function()? updated,
+    TResult Function(String message)? userLeft,
     TResult Function()? gameFinished,
     required TResult orElse(),
   }) {
@@ -675,6 +696,7 @@ class _$GameCreated implements GameCreated {
     required TResult Function(GameCreated value) gameCreated,
     required TResult Function(GameJoined value) gameJoined,
     required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
     required TResult Function(GameFinished value) gameFinished,
   }) {
     return gameCreated(this);
@@ -688,6 +710,7 @@ class _$GameCreated implements GameCreated {
     TResult? Function(GameCreated value)? gameCreated,
     TResult? Function(GameJoined value)? gameJoined,
     TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
     TResult? Function(GameFinished value)? gameFinished,
   }) {
     return gameCreated?.call(this);
@@ -701,6 +724,7 @@ class _$GameCreated implements GameCreated {
     TResult Function(GameCreated value)? gameCreated,
     TResult Function(GameJoined value)? gameJoined,
     TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
     TResult Function(GameFinished value)? gameFinished,
     required TResult orElse(),
   }) {
@@ -758,6 +782,7 @@ class _$GameJoined implements GameJoined {
     required TResult Function() gameCreated,
     required TResult Function() gameJoined,
     required TResult Function() updated,
+    required TResult Function(String message) userLeft,
     required TResult Function() gameFinished,
   }) {
     return gameJoined();
@@ -771,6 +796,7 @@ class _$GameJoined implements GameJoined {
     TResult? Function()? gameCreated,
     TResult? Function()? gameJoined,
     TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
     TResult? Function()? gameFinished,
   }) {
     return gameJoined?.call();
@@ -784,6 +810,7 @@ class _$GameJoined implements GameJoined {
     TResult Function()? gameCreated,
     TResult Function()? gameJoined,
     TResult Function()? updated,
+    TResult Function(String message)? userLeft,
     TResult Function()? gameFinished,
     required TResult orElse(),
   }) {
@@ -801,6 +828,7 @@ class _$GameJoined implements GameJoined {
     required TResult Function(GameCreated value) gameCreated,
     required TResult Function(GameJoined value) gameJoined,
     required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
     required TResult Function(GameFinished value) gameFinished,
   }) {
     return gameJoined(this);
@@ -814,6 +842,7 @@ class _$GameJoined implements GameJoined {
     TResult? Function(GameCreated value)? gameCreated,
     TResult? Function(GameJoined value)? gameJoined,
     TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
     TResult? Function(GameFinished value)? gameFinished,
   }) {
     return gameJoined?.call(this);
@@ -827,6 +856,7 @@ class _$GameJoined implements GameJoined {
     TResult Function(GameCreated value)? gameCreated,
     TResult Function(GameJoined value)? gameJoined,
     TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
     TResult Function(GameFinished value)? gameFinished,
     required TResult orElse(),
   }) {
@@ -882,6 +912,7 @@ class _$Updated implements Updated {
     required TResult Function() gameCreated,
     required TResult Function() gameJoined,
     required TResult Function() updated,
+    required TResult Function(String message) userLeft,
     required TResult Function() gameFinished,
   }) {
     return updated();
@@ -895,6 +926,7 @@ class _$Updated implements Updated {
     TResult? Function()? gameCreated,
     TResult? Function()? gameJoined,
     TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
     TResult? Function()? gameFinished,
   }) {
     return updated?.call();
@@ -908,6 +940,7 @@ class _$Updated implements Updated {
     TResult Function()? gameCreated,
     TResult Function()? gameJoined,
     TResult Function()? updated,
+    TResult Function(String message)? userLeft,
     TResult Function()? gameFinished,
     required TResult orElse(),
   }) {
@@ -925,6 +958,7 @@ class _$Updated implements Updated {
     required TResult Function(GameCreated value) gameCreated,
     required TResult Function(GameJoined value) gameJoined,
     required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
     required TResult Function(GameFinished value) gameFinished,
   }) {
     return updated(this);
@@ -938,6 +972,7 @@ class _$Updated implements Updated {
     TResult? Function(GameCreated value)? gameCreated,
     TResult? Function(GameJoined value)? gameJoined,
     TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
     TResult? Function(GameFinished value)? gameFinished,
   }) {
     return updated?.call(this);
@@ -951,6 +986,7 @@ class _$Updated implements Updated {
     TResult Function(GameCreated value)? gameCreated,
     TResult Function(GameJoined value)? gameJoined,
     TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
     TResult Function(GameFinished value)? gameFinished,
     required TResult orElse(),
   }) {
@@ -963,6 +999,168 @@ class _$Updated implements Updated {
 
 abstract class Updated implements GameStatus {
   const factory Updated() = _$Updated;
+}
+
+/// @nodoc
+abstract class _$$UserLeftCopyWith<$Res> {
+  factory _$$UserLeftCopyWith(
+          _$UserLeft value, $Res Function(_$UserLeft) then) =
+      __$$UserLeftCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$UserLeftCopyWithImpl<$Res>
+    extends _$GameStatusCopyWithImpl<$Res, _$UserLeft>
+    implements _$$UserLeftCopyWith<$Res> {
+  __$$UserLeftCopyWithImpl(_$UserLeft _value, $Res Function(_$UserLeft) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$UserLeft(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserLeft implements UserLeft {
+  const _$UserLeft(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'GameStatus.userLeft(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserLeft &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserLeftCopyWith<_$UserLeft> get copyWith =>
+      __$$UserLeftCopyWithImpl<_$UserLeft>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) loading,
+    required TResult Function() gameCreated,
+    required TResult Function() gameJoined,
+    required TResult Function() updated,
+    required TResult Function(String message) userLeft,
+    required TResult Function() gameFinished,
+  }) {
+    return userLeft(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? loading,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameJoined,
+    TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
+    TResult? Function()? gameFinished,
+  }) {
+    return userLeft?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? loading,
+    TResult Function()? gameCreated,
+    TResult Function()? gameJoined,
+    TResult Function()? updated,
+    TResult Function(String message)? userLeft,
+    TResult Function()? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (userLeft != null) {
+      return userLeft(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
+    required TResult Function(GameFinished value) gameFinished,
+  }) {
+    return userLeft(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
+    TResult? Function(GameFinished value)? gameFinished,
+  }) {
+    return userLeft?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
+    TResult Function(GameFinished value)? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (userLeft != null) {
+      return userLeft(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserLeft implements GameStatus {
+  const factory UserLeft(final String message) = _$UserLeft;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$UserLeftCopyWith<_$UserLeft> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1008,6 +1206,7 @@ class _$GameFinished implements GameFinished {
     required TResult Function() gameCreated,
     required TResult Function() gameJoined,
     required TResult Function() updated,
+    required TResult Function(String message) userLeft,
     required TResult Function() gameFinished,
   }) {
     return gameFinished();
@@ -1021,6 +1220,7 @@ class _$GameFinished implements GameFinished {
     TResult? Function()? gameCreated,
     TResult? Function()? gameJoined,
     TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
     TResult? Function()? gameFinished,
   }) {
     return gameFinished?.call();
@@ -1034,6 +1234,7 @@ class _$GameFinished implements GameFinished {
     TResult Function()? gameCreated,
     TResult Function()? gameJoined,
     TResult Function()? updated,
+    TResult Function(String message)? userLeft,
     TResult Function()? gameFinished,
     required TResult orElse(),
   }) {
@@ -1051,6 +1252,7 @@ class _$GameFinished implements GameFinished {
     required TResult Function(GameCreated value) gameCreated,
     required TResult Function(GameJoined value) gameJoined,
     required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
     required TResult Function(GameFinished value) gameFinished,
   }) {
     return gameFinished(this);
@@ -1064,6 +1266,7 @@ class _$GameFinished implements GameFinished {
     TResult? Function(GameCreated value)? gameCreated,
     TResult? Function(GameJoined value)? gameJoined,
     TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
     TResult? Function(GameFinished value)? gameFinished,
   }) {
     return gameFinished?.call(this);
@@ -1077,6 +1280,7 @@ class _$GameFinished implements GameFinished {
     TResult Function(GameCreated value)? gameCreated,
     TResult Function(GameJoined value)? gameJoined,
     TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
     TResult Function(GameFinished value)? gameFinished,
     required TResult orElse(),
   }) {

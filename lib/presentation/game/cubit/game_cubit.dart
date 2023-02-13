@@ -5,6 +5,8 @@ import 'package:trivia_app/data/socket_client.dart';
 import 'package:trivia_app/models/game_state.dart' as game_state;
 import 'package:trivia_app/models/question_payload.dart';
 import 'package:trivia_app/presentation/game/round_cubit/round_cubit.dart';
+import 'package:trivia_app/presentation/game/ui/widgets/connected_users_ui.dart';
+import 'package:trivia_app/presentation/ui_config/animations/scale_animation.dart';
 
 import '../../../models/game_state.dart';
 
@@ -49,6 +51,27 @@ class GameCubit extends Cubit<GameState> {
         status: const GameStatus.updated(),
         connectedUsers: List.of(state.connectedUsers)..insert(0, user),
       ));
+    });
+
+    socketClient.recieveOn(RecievingEvent.userLeft, (data) {
+      final userId = data['userId'] as String;
+      final userLeft = state.connectedUsers.firstWhere(
+        (user) => user.id == userId,
+      );
+
+      final index = state.connectedUsers.indexOf(userLeft);
+      connectedUserListKey.currentState?.removeItem(
+          index,
+          ((context, animation) => ScaleAnimation(
+                child: UserItem(name: userLeft.name),
+              )));
+
+      emit(
+        state.copyWith(
+          connectedUsers: List.of(state.connectedUsers)..remove(userLeft),
+          status: GameStatus.userLeft('${userLeft.name} left the game.'),
+        ),
+      );
     });
 
     socketClient.recieveOn(RecievingEvent.questionAsked, (payload) {
