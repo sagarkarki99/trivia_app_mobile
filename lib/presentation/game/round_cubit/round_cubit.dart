@@ -26,7 +26,7 @@ class RoundCubit extends Cubit<RoundState> {
     client.recieveOn(RecievingEvent.newAnswerSubmitted, (payload) {
       emit(
         state.copyWith(
-          status: const RoundStatus.newAnswered(),
+          status: const RoundStatus.newAnswerRecieved(),
           answers: List.of(state.answers)
             ..add(
               Answer.fromJson(payload as Map<String, dynamic>),
@@ -51,7 +51,11 @@ class RoundCubit extends Cubit<RoundState> {
     super.close();
   }
 
-  void answerQuestion(String answer) {
+  void submitNewAnswer(String answer) {
+    emit(state.copyWith(
+      status: const RoundStatus.newAnswerSubmitted(),
+      selectedAnswer: answer,
+    ));
     client.send(SendingEvent.answerQuestion, {
       "gameId": gameId,
       "answer": {

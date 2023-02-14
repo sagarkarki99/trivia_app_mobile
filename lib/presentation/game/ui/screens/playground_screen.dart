@@ -1,11 +1,13 @@
-import 'package:fluentui_icons/fluentui_icons.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/models/game_state.dart';
+import 'package:trivia_app/models/question_payload.dart';
 import 'package:trivia_app/presentation/game/cubit/game_cubit.dart';
 import 'package:trivia_app/presentation/game/round_cubit/round_cubit.dart';
 import 'package:trivia_app/presentation/game/ui/widgets/connected_users_ui.dart';
 import 'package:trivia_app/presentation/game/ui/widgets/question_view.dart';
+import 'package:trivia_app/presentation/ui_config/animations/scale_animation.dart';
 import 'package:trivia_app/presentation/ui_config/app_colors.dart';
 
 import '../../../../data/socket_client.dart';
@@ -13,7 +15,7 @@ import '../../../../di/locator.dart';
 
 class PlaygroundScreen extends StatelessWidget {
   final InitialGameState initialState;
-  const PlaygroundScreen(this.initialState, {super.key});
+  const PlaygroundScreen({super.key, required this.initialState});
 
   @override
   Widget build(BuildContext context) {
@@ -126,23 +128,25 @@ class _AnswersUIState extends State<AnswersUI> {
   Widget build(BuildContext context) {
     final roundState = context.watch<RoundCubit>().state;
     return Column(
-      children: roundState.questionPayload.answerOptions
-          .map(
-            (opt) => roundState.selectedAnswer ==
-                    roundState.questionPayload.correctAnswer
-                ? CorrectAnswerItem(answer: opt)
-                : AnswerItem(
-                    answer: opt,
-                    isSelected: opt == selectedAnswer,
-                    onSelect: roundState.isTimeUp
-                        ? null
-                        : () {
-                            setState(() {
-                              selectedAnswer = opt;
-                            });
-                          }),
-          )
-          .toList(),
+      children: roundState.questionPayload.answerOptions.map((option) {
+        if (roundState.isCorrectAnswer(option)) {
+          return CorrectAnswerItem(answer: option);
+        } else if (roundState.isWrongAnswer(option)) {
+          return WrongAnswerItem(answer: option);
+        } else {
+          return AnswerItem(
+            answer: option,
+            isSelected: option == selectedAnswer,
+            onSelect: roundState.allowToAnswer
+                ? () => setState(() => selectedAnswer = option)
+                : null,
+            onSubmit: () {
+              context.read<RoundCubit>().submitNewAnswer(selectedAnswer);
+              setState(() => selectedAnswer = '');
+            },
+          );
+        }
+      }).toList(),
     );
   }
 }
@@ -151,36 +155,52 @@ class AnswerItem extends StatelessWidget {
   final String answer;
   final bool isSelected;
   final VoidCallback? onSelect;
+  final VoidCallback? onSubmit;
 
   const AnswerItem({
     super.key,
     required this.answer,
     this.isSelected = false,
     required this.onSelect,
+    required this.onSubmit,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 8.0),
-      child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 8.0,
-          vertical: 8.0,
-        ),
-        minVerticalPadding: 14,
-        visualDensity: VisualDensity.compact,
-        dense: true,
-        tileColor:
-            isSelected ? AppColors.light.lightGreen : AppColors.light.grey,
-        title: Text(answer),
-        trailing: isSelected
-            ? const Icon(
-                FluentSystemIcons.ic_fluent_checkmark_circle_filled,
-                color: Colors.green,
-              )
-            : const SizedBox(),
+      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
+      child: InkWell(
         onTap: onSelect,
+        splashColor: AppColors.light.lightGreen,
+        highlightColor: AppColors.light.lightGreen,
+        child: ListTile(
+          title: Text(answer),
+          visualDensity: VisualDensity.compact,
+          dense: true,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 12.0,
+            vertical: 8.0,
+          ),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12.0),
+              side: isSelected
+                  ? BorderSide(color: AppColors.light.grey)
+                  : BorderSide.none),
+          tileColor: isSelected
+              ? AppColors.light.lightGreen.withOpacity(0.4)
+              : AppColors.light.grey,
+          trailing: isSelected
+              ? ScaleAnimation(
+                  child: IconButton(
+                    icon: const Icon(
+                      FluentIcons.send_16_filled,
+                      color: Colors.green,
+                    ),
+                    onPressed: onSubmit,
+                  ),
+                )
+              : const SizedBox(),
+        ),
       ),
     );
   }
@@ -199,17 +219,78 @@ class CorrectAnswerItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 8.0),
       child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 8.0,
-          vertical: 8.0,
-        ),
-        minVerticalPadding: 14,
         visualDensity: VisualDensity.compact,
         dense: true,
-        trailing: const Icon(FluentSystemIcons.ic_fluent_ticket_filled),
-        tileColor: AppColors.light.grey,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 12.0,
+          vertical: 8.0,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          side: BorderSide(color: AppColors.light.grey),
+        ),
+        minVerticalPadding: 14,
+        trailing: Icon(
+          FluentIcons.arrow_autofit_content_20_filled,
+          color: Colors.green.withOpacity(0.8),
+        ),
+        tileColor: AppColors.light.lightGreen,
         title: Text(answer),
       ),
+    );
+  }
+}
+
+class WrongAnswerItem extends StatelessWidget {
+  final String answer;
+
+  const WrongAnswerItem({
+    super.key,
+    required this.answer,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 8.0),
+      child: ListTile(
+        visualDensity: VisualDensity.compact,
+        dense: true,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 12.0,
+          vertical: 8.0,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          side: BorderSide(color: AppColors.light.grey),
+        ),
+        minVerticalPadding: 14,
+        trailing: Icon(FluentIcons.arrow_trending_checkmark_20_filled,
+            color: AppColors.light.red.withOpacity(0.6)),
+        tileColor: AppColors.light.red.withOpacity(0.3),
+        title: Text(answer),
+      ),
+    );
+  }
+}
+
+class DemoPlaygroundScreen extends StatelessWidget {
+  const DemoPlaygroundScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => RoundCubit(
+        gameId: 'hehe',
+        client: locator<SocketClient>(),
+        questionPayload: const QuestionPayload(
+          question: 'What is the capital city of India?',
+          answerOptions: ['Kathmandu', 'New Delhi', 'Berlin', "Beijing"],
+          correctAnswer: 'New Delhi',
+          totalSeconds: 20,
+        ),
+      ),
+      child: const AnsweringView(),
     );
   }
 }
