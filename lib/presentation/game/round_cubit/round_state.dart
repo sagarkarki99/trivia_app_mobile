@@ -12,24 +12,25 @@ class RoundState with _$RoundState {
 
   const RoundState._();
 
+  bool isCorrectAnswer(String compareAnswer) =>
+      selectedAnswer.isNotEmpty &&
+      compareAnswer == questionPayload.correctAnswer;
+
+  bool isWrongAnswer(String compareAnswer) =>
+      selectedAnswer.isNotEmpty &&
+      selectedAnswer == compareAnswer &&
+      compareAnswer != questionPayload.correctAnswer;
+
+  bool get allowToAnswer => !isTimeUp && selectedAnswer.isEmpty;
   double get remainingSeconds => remainingMilliseconds / 1000;
 
   bool get isTimerAboutToFinish => remainingSeconds <= 5.00;
   bool get isTimeUp => remainingSeconds == 0.00;
-  // int getUserCountFor(String answer) {
-  //   return getUsersFor(answer).length;
-  // }
-
-  // List<ConnectedUser> getUsersFor(String answer) {
-  //   return answers
-  //       .where((ans) => ans.userAnswer == answer)
-  //       .map((e) => e.getUserIn(connectedUsers))
-  //       .toList();
-  // }
 }
 
 @freezed
 class RoundStatus with _$RoundStatus {
   const factory RoundStatus.initial() = _Initial;
-  const factory RoundStatus.newAnswered() = _NewAnswered;
+  const factory RoundStatus.newAnswerRecieved() = _NewAnswerRecieved;
+  const factory RoundStatus.newAnswerSubmitted() = _NewAnswerSubmitted;
 }

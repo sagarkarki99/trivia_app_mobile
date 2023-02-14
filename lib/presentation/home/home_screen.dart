@@ -45,7 +45,8 @@ class _Body extends StatelessWidget {
           gameJoined: (initialState) {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => PlaygroundScreen(initialState),
+                builder: (context) =>
+                    PlaygroundScreen(initialState: initialState),
               ),
             );
           },

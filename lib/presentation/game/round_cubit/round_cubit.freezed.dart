@@ -265,38 +265,44 @@ mixin _$RoundStatus {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() newAnswered,
+    required TResult Function() newAnswerRecieved,
+    required TResult Function() newAnswerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? newAnswered,
+    TResult? Function()? newAnswerRecieved,
+    TResult? Function()? newAnswerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? newAnswered,
+    TResult Function()? newAnswerRecieved,
+    TResult Function()? newAnswerSubmitted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_NewAnswered value) newAnswered,
+    required TResult Function(_NewAnswerRecieved value) newAnswerRecieved,
+    required TResult Function(_NewAnswerSubmitted value) newAnswerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_NewAnswered value)? newAnswered,
+    TResult? Function(_NewAnswerRecieved value)? newAnswerRecieved,
+    TResult? Function(_NewAnswerSubmitted value)? newAnswerSubmitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_NewAnswered value)? newAnswered,
+    TResult Function(_NewAnswerRecieved value)? newAnswerRecieved,
+    TResult Function(_NewAnswerSubmitted value)? newAnswerSubmitted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -358,7 +364,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() newAnswered,
+    required TResult Function() newAnswerRecieved,
+    required TResult Function() newAnswerSubmitted,
   }) {
     return initial();
   }
@@ -367,7 +374,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? newAnswered,
+    TResult? Function()? newAnswerRecieved,
+    TResult? Function()? newAnswerSubmitted,
   }) {
     return initial?.call();
   }
@@ -376,7 +384,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? newAnswered,
+    TResult Function()? newAnswerRecieved,
+    TResult Function()? newAnswerSubmitted,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -389,7 +398,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_NewAnswered value) newAnswered,
+    required TResult Function(_NewAnswerRecieved value) newAnswerRecieved,
+    required TResult Function(_NewAnswerSubmitted value) newAnswerSubmitted,
   }) {
     return initial(this);
   }
@@ -398,7 +408,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_NewAnswered value)? newAnswered,
+    TResult? Function(_NewAnswerRecieved value)? newAnswerRecieved,
+    TResult? Function(_NewAnswerSubmitted value)? newAnswerSubmitted,
   }) {
     return initial?.call(this);
   }
@@ -407,7 +418,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_NewAnswered value)? newAnswered,
+    TResult Function(_NewAnswerRecieved value)? newAnswerRecieved,
+    TResult Function(_NewAnswerSubmitted value)? newAnswerSubmitted,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -422,35 +434,35 @@ abstract class _Initial implements RoundStatus {
 }
 
 /// @nodoc
-abstract class _$$_NewAnsweredCopyWith<$Res> {
-  factory _$$_NewAnsweredCopyWith(
-          _$_NewAnswered value, $Res Function(_$_NewAnswered) then) =
-      __$$_NewAnsweredCopyWithImpl<$Res>;
+abstract class _$$_NewAnswerRecievedCopyWith<$Res> {
+  factory _$$_NewAnswerRecievedCopyWith(_$_NewAnswerRecieved value,
+          $Res Function(_$_NewAnswerRecieved) then) =
+      __$$_NewAnswerRecievedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NewAnsweredCopyWithImpl<$Res>
-    extends _$RoundStatusCopyWithImpl<$Res, _$_NewAnswered>
-    implements _$$_NewAnsweredCopyWith<$Res> {
-  __$$_NewAnsweredCopyWithImpl(
-      _$_NewAnswered _value, $Res Function(_$_NewAnswered) _then)
+class __$$_NewAnswerRecievedCopyWithImpl<$Res>
+    extends _$RoundStatusCopyWithImpl<$Res, _$_NewAnswerRecieved>
+    implements _$$_NewAnswerRecievedCopyWith<$Res> {
+  __$$_NewAnswerRecievedCopyWithImpl(
+      _$_NewAnswerRecieved _value, $Res Function(_$_NewAnswerRecieved) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NewAnswered implements _NewAnswered {
-  const _$_NewAnswered();
+class _$_NewAnswerRecieved implements _NewAnswerRecieved {
+  const _$_NewAnswerRecieved();
 
   @override
   String toString() {
-    return 'RoundStatus.newAnswered()';
+    return 'RoundStatus.newAnswerRecieved()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NewAnswered);
+        (other.runtimeType == runtimeType && other is _$_NewAnswerRecieved);
   }
 
   @override
@@ -460,29 +472,32 @@ class _$_NewAnswered implements _NewAnswered {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() newAnswered,
+    required TResult Function() newAnswerRecieved,
+    required TResult Function() newAnswerSubmitted,
   }) {
-    return newAnswered();
+    return newAnswerRecieved();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? newAnswered,
+    TResult? Function()? newAnswerRecieved,
+    TResult? Function()? newAnswerSubmitted,
   }) {
-    return newAnswered?.call();
+    return newAnswerRecieved?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? newAnswered,
+    TResult Function()? newAnswerRecieved,
+    TResult Function()? newAnswerSubmitted,
     required TResult orElse(),
   }) {
-    if (newAnswered != null) {
-      return newAnswered();
+    if (newAnswerRecieved != null) {
+      return newAnswerRecieved();
     }
     return orElse();
   }
@@ -491,34 +506,145 @@ class _$_NewAnswered implements _NewAnswered {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_NewAnswered value) newAnswered,
+    required TResult Function(_NewAnswerRecieved value) newAnswerRecieved,
+    required TResult Function(_NewAnswerSubmitted value) newAnswerSubmitted,
   }) {
-    return newAnswered(this);
+    return newAnswerRecieved(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_NewAnswered value)? newAnswered,
+    TResult? Function(_NewAnswerRecieved value)? newAnswerRecieved,
+    TResult? Function(_NewAnswerSubmitted value)? newAnswerSubmitted,
   }) {
-    return newAnswered?.call(this);
+    return newAnswerRecieved?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_NewAnswered value)? newAnswered,
+    TResult Function(_NewAnswerRecieved value)? newAnswerRecieved,
+    TResult Function(_NewAnswerSubmitted value)? newAnswerSubmitted,
     required TResult orElse(),
   }) {
-    if (newAnswered != null) {
-      return newAnswered(this);
+    if (newAnswerRecieved != null) {
+      return newAnswerRecieved(this);
     }
     return orElse();
   }
 }
 
-abstract class _NewAnswered implements RoundStatus {
-  const factory _NewAnswered() = _$_NewAnswered;
+abstract class _NewAnswerRecieved implements RoundStatus {
+  const factory _NewAnswerRecieved() = _$_NewAnswerRecieved;
+}
+
+/// @nodoc
+abstract class _$$_NewAnswerSubmittedCopyWith<$Res> {
+  factory _$$_NewAnswerSubmittedCopyWith(_$_NewAnswerSubmitted value,
+          $Res Function(_$_NewAnswerSubmitted) then) =
+      __$$_NewAnswerSubmittedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_NewAnswerSubmittedCopyWithImpl<$Res>
+    extends _$RoundStatusCopyWithImpl<$Res, _$_NewAnswerSubmitted>
+    implements _$$_NewAnswerSubmittedCopyWith<$Res> {
+  __$$_NewAnswerSubmittedCopyWithImpl(
+      _$_NewAnswerSubmitted _value, $Res Function(_$_NewAnswerSubmitted) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_NewAnswerSubmitted implements _NewAnswerSubmitted {
+  const _$_NewAnswerSubmitted();
+
+  @override
+  String toString() {
+    return 'RoundStatus.newAnswerSubmitted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NewAnswerSubmitted);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() newAnswerRecieved,
+    required TResult Function() newAnswerSubmitted,
+  }) {
+    return newAnswerSubmitted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? newAnswerRecieved,
+    TResult? Function()? newAnswerSubmitted,
+  }) {
+    return newAnswerSubmitted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? newAnswerRecieved,
+    TResult Function()? newAnswerSubmitted,
+    required TResult orElse(),
+  }) {
+    if (newAnswerSubmitted != null) {
+      return newAnswerSubmitted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_NewAnswerRecieved value) newAnswerRecieved,
+    required TResult Function(_NewAnswerSubmitted value) newAnswerSubmitted,
+  }) {
+    return newAnswerSubmitted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_NewAnswerRecieved value)? newAnswerRecieved,
+    TResult? Function(_NewAnswerSubmitted value)? newAnswerSubmitted,
+  }) {
+    return newAnswerSubmitted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_NewAnswerRecieved value)? newAnswerRecieved,
+    TResult Function(_NewAnswerSubmitted value)? newAnswerSubmitted,
+    required TResult orElse(),
+  }) {
+    if (newAnswerSubmitted != null) {
+      return newAnswerSubmitted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NewAnswerSubmitted implements RoundStatus {
+  const factory _NewAnswerSubmitted() = _$_NewAnswerSubmitted;
 }
