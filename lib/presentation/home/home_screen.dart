@@ -63,7 +63,7 @@ class _Body extends StatelessWidget {
             ElevatedButton(
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => JoiningGameScreen(homeCubit: cubit),
+                  builder: (context) => const DemoPlaygroundScreen(),
                 ),
               ),
               child: const Text('Join Game'),
