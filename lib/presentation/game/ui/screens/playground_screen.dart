@@ -7,8 +7,10 @@ import 'package:trivia_app/presentation/game/cubit/game_cubit.dart';
 import 'package:trivia_app/presentation/game/round_cubit/round_cubit.dart';
 import 'package:trivia_app/presentation/game/ui/widgets/connected_users_ui.dart';
 import 'package:trivia_app/presentation/game/ui/widgets/question_view.dart';
+import 'package:trivia_app/presentation/ui_config/animations/fade_animation.dart';
 import 'package:trivia_app/presentation/ui_config/animations/scale_animation.dart';
 import 'package:trivia_app/presentation/ui_config/app_colors.dart';
+import 'package:trivia_app/presentation/ui_config/global_widgets/scale_tap_indicator.dart';
 
 import '../../../../data/socket_client.dart';
 import '../../../../di/locator.dart';
@@ -66,36 +68,44 @@ class AnsweringView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<RoundCubit, RoundState>(
-        builder: (context, state) {
-          final question = state.questionPayload;
-          return Material(
-            child: Column(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child:
-                      Center(child: QuestionTitle(question: question.question)),
-                ),
-                const SizedBox(height: 16),
-                const Expanded(
-                  flex: 2,
-                  child: AnswersUI(),
-                ),
-              ],
-            ),
-          );
-        },
+    return SafeArea(
+      child: Scaffold(
+        body: BlocBuilder<RoundCubit, RoundState>(
+          builder: (context, state) {
+            final question = state.questionPayload;
+            return Material(
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Center(
+                      child: ScaleAnimation(
+                        curve: Curves.fastOutSlowIn,
+                        child: QuestionTitle(question: question.question),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Expanded(
+                    flex: 4,
+                    child: AnswersUI(),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: null,
+          backgroundColor:
+              context.watch<RoundCubit>().state.isTimerAboutToFinish
+                  ? AppColors.light.red
+                  : AppColors.light.primary,
+          child: const CountDownUi(),
+        ),
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.miniStartFloat,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: null,
-        backgroundColor: context.watch<RoundCubit>().state.isTimerAboutToFinish
-            ? AppColors.light.red
-            : AppColors.light.primary,
-        child: const CountDownUi(),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniStartFloat,
     );
   }
 }
@@ -108,7 +118,7 @@ class QuestionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       question,
-      style: Theme.of(context).textTheme.headline3,
+      style: Theme.of(context).textTheme.headline2,
     );
   }
 }
@@ -134,16 +144,19 @@ class _AnswersUIState extends State<AnswersUI> {
         } else if (roundState.isWrongAnswer(option)) {
           return WrongAnswerItem(answer: option);
         } else {
-          return AnswerItem(
-            answer: option,
-            isSelected: option == selectedAnswer,
-            onSelect: roundState.allowToAnswer
-                ? () => setState(() => selectedAnswer = option)
-                : null,
-            onSubmit: () {
-              context.read<RoundCubit>().submitNewAnswer(selectedAnswer);
-              setState(() => selectedAnswer = '');
-            },
+          return FadeAnimation(
+            durationMs: 500,
+            child: AnswerItem(
+              answer: option,
+              isSelected: option == selectedAnswer,
+              onSelect: roundState.allowToAnswer
+                  ? () => setState(() => selectedAnswer = option)
+                  : null,
+              onSubmit: () {
+                context.read<RoundCubit>().submitNewAnswer(selectedAnswer);
+                setState(() => selectedAnswer = '');
+              },
+            ),
           );
         }
       }).toList(),
@@ -169,10 +182,8 @@ class AnswerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-      child: InkWell(
+      child: ScaleTapDetector(
         onTap: onSelect,
-        splashColor: AppColors.light.lightGreen,
-        highlightColor: AppColors.light.lightGreen,
         child: ListTile(
           title: Text(answer),
           visualDensity: VisualDensity.compact,

@@ -8,6 +8,7 @@ class AppTheme {
   static ThemeData get light => ThemeData(
         backgroundColor: appColor.background,
         textTheme: textTheme,
+        brightness: Brightness.light,
       );
 
   static TextTheme get textTheme => TextTheme(
