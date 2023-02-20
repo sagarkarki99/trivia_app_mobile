@@ -16,6 +16,158 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$QuestionFormState {
+  FormStatus get status => throw _privateConstructorUsedError;
+  String get selected => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $QuestionFormStateCopyWith<QuestionFormState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $QuestionFormStateCopyWith<$Res> {
+  factory $QuestionFormStateCopyWith(
+          QuestionFormState value, $Res Function(QuestionFormState) then) =
+      _$QuestionFormStateCopyWithImpl<$Res, QuestionFormState>;
+  @useResult
+  $Res call({FormStatus status, String selected});
+
+  $FormStatusCopyWith<$Res> get status;
+}
+
+/// @nodoc
+class _$QuestionFormStateCopyWithImpl<$Res, $Val extends QuestionFormState>
+    implements $QuestionFormStateCopyWith<$Res> {
+  _$QuestionFormStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? selected = null,
+  }) {
+    return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as FormStatus,
+      selected: null == selected
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FormStatusCopyWith<$Res> get status {
+    return $FormStatusCopyWith<$Res>(_value.status, (value) {
+      return _then(_value.copyWith(status: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_QuestionFormStateCopyWith<$Res>
+    implements $QuestionFormStateCopyWith<$Res> {
+  factory _$$_QuestionFormStateCopyWith(_$_QuestionFormState value,
+          $Res Function(_$_QuestionFormState) then) =
+      __$$_QuestionFormStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({FormStatus status, String selected});
+
+  @override
+  $FormStatusCopyWith<$Res> get status;
+}
+
+/// @nodoc
+class __$$_QuestionFormStateCopyWithImpl<$Res>
+    extends _$QuestionFormStateCopyWithImpl<$Res, _$_QuestionFormState>
+    implements _$$_QuestionFormStateCopyWith<$Res> {
+  __$$_QuestionFormStateCopyWithImpl(
+      _$_QuestionFormState _value, $Res Function(_$_QuestionFormState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? selected = null,
+  }) {
+    return _then(_$_QuestionFormState(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as FormStatus,
+      selected: null == selected
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_QuestionFormState implements _QuestionFormState {
+  const _$_QuestionFormState(
+      {this.status = const FormStatus.initial(), this.selected = ''});
+
+  @override
+  @JsonKey()
+  final FormStatus status;
+  @override
+  @JsonKey()
+  final String selected;
+
+  @override
+  String toString() {
+    return 'QuestionFormState(status: $status, selected: $selected)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_QuestionFormState &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.selected, selected) ||
+                other.selected == selected));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, status, selected);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_QuestionFormStateCopyWith<_$_QuestionFormState> get copyWith =>
+      __$$_QuestionFormStateCopyWithImpl<_$_QuestionFormState>(
+          this, _$identity);
+}
+
+abstract class _QuestionFormState implements QuestionFormState {
+  const factory _QuestionFormState(
+      {final FormStatus status, final String selected}) = _$_QuestionFormState;
+
+  @override
+  FormStatus get status;
+  @override
+  String get selected;
+  @override
+  @JsonKey(ignore: true)
+  _$$_QuestionFormStateCopyWith<_$_QuestionFormState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$FormStatus {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -57,16 +209,16 @@ mixin _$QuestionFormState {
 }
 
 /// @nodoc
-abstract class $QuestionFormStateCopyWith<$Res> {
-  factory $QuestionFormStateCopyWith(
-          QuestionFormState value, $Res Function(QuestionFormState) then) =
-      _$QuestionFormStateCopyWithImpl<$Res, QuestionFormState>;
+abstract class $FormStatusCopyWith<$Res> {
+  factory $FormStatusCopyWith(
+          FormStatus value, $Res Function(FormStatus) then) =
+      _$FormStatusCopyWithImpl<$Res, FormStatus>;
 }
 
 /// @nodoc
-class _$QuestionFormStateCopyWithImpl<$Res, $Val extends QuestionFormState>
-    implements $QuestionFormStateCopyWith<$Res> {
-  _$QuestionFormStateCopyWithImpl(this._value, this._then);
+class _$FormStatusCopyWithImpl<$Res, $Val extends FormStatus>
+    implements $FormStatusCopyWith<$Res> {
+  _$FormStatusCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -82,7 +234,7 @@ abstract class _$$InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialCopyWithImpl<$Res>
-    extends _$QuestionFormStateCopyWithImpl<$Res, _$Initial>
+    extends _$FormStatusCopyWithImpl<$Res, _$Initial>
     implements _$$InitialCopyWith<$Res> {
   __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
       : super(_value, _then);
@@ -95,7 +247,7 @@ class _$Initial implements Initial {
 
   @override
   String toString() {
-    return 'QuestionFormState.initial()';
+    return 'FormStatus.initial()';
   }
 
   @override
@@ -170,7 +322,7 @@ class _$Initial implements Initial {
   }
 }
 
-abstract class Initial implements QuestionFormState {
+abstract class Initial implements FormStatus {
   const factory Initial() = _$Initial;
 }
 
@@ -182,7 +334,7 @@ abstract class _$$ReadyCopyWith<$Res> {
 
 /// @nodoc
 class __$$ReadyCopyWithImpl<$Res>
-    extends _$QuestionFormStateCopyWithImpl<$Res, _$Ready>
+    extends _$FormStatusCopyWithImpl<$Res, _$Ready>
     implements _$$ReadyCopyWith<$Res> {
   __$$ReadyCopyWithImpl(_$Ready _value, $Res Function(_$Ready) _then)
       : super(_value, _then);
@@ -195,7 +347,7 @@ class _$Ready implements Ready {
 
   @override
   String toString() {
-    return 'QuestionFormState.ready()';
+    return 'FormStatus.ready()';
   }
 
   @override
@@ -270,6 +422,6 @@ class _$Ready implements Ready {
   }
 }
 
-abstract class Ready implements QuestionFormState {
+abstract class Ready implements FormStatus {
   const factory Ready() = _$Ready;
 }

@@ -62,6 +62,7 @@ class _Body extends StatelessWidget {
             onPressed: () async {
               showModalBottomSheet(
                 context: context,
+                isScrollControlled: true,
                 builder: (ctx) => QuestionForm(
                   onAsk: (question) {
                     context.read<GameCubit>().askQuestion(question);

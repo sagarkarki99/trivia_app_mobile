@@ -14,12 +14,12 @@ class QuestionFormCubit extends Cubit<QuestionFormState> {
   late TextEditingController answer3Controller;
   late TextEditingController answer4Controller;
   late GlobalKey<FormState> _formKey;
-  QuestionFormCubit() : super(const QuestionFormState.initial()) {
+  QuestionFormCubit() : super(const QuestionFormState()) {
     questionController = TextEditingController(text: "What is your name?");
     answer1Controller = TextEditingController(text: "Nino");
-    answer2Controller = TextEditingController(text: "Sagur");
-    answer3Controller = TextEditingController(text: "Sagar");
-    answer4Controller = TextEditingController(text: "Sagor");
+    answer2Controller = TextEditingController();
+    answer3Controller = TextEditingController();
+    answer4Controller = TextEditingController();
     _formKey = GlobalKey<FormState>();
   }
 
@@ -35,11 +35,15 @@ class QuestionFormCubit extends Cubit<QuestionFormState> {
           answer3Controller.text.trim(),
           answer4Controller.text.trim(),
         ],
-        correctAnswer: answer1Controller.text.trim(),
+        correctAnswer: state.selected,
         totalSeconds: 20,
       );
       return payload;
     }
     return null;
+  }
+
+  setNewSelected(String value) {
+    emit(state.copyWith(selected: value));
   }
 }
