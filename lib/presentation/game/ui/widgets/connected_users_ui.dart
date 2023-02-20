@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trivia_app/presentation/game/ui/widgets/user_avatar.dart';
+import 'package:trivia_app/presentation/ui_config/global_widgets/user_avatar.dart';
 import 'package:trivia_app/presentation/ui_config/animations/animations.dart';
 import 'package:trivia_app/presentation/ui_config/app_colors.dart';
 
