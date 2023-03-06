@@ -1,11 +1,12 @@
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:socket_io_client/socket_io_client.dart' as io;
 
 class SocketClientImpl implements SocketClient {
-  late IO.Socket socket;
+  late io.Socket socket;
   SocketClientImpl() {
-    socket = IO.io(
-        'https://766e-110-44-125-12.ap.ngrok.io',
-        IO.OptionBuilder()
+    socket = io.io(
+        'http://192.168.0.107:3001',
+        // 'http://172.16.10.62:3001',
+        io.OptionBuilder()
             .setTransports(['websocket']) // for Flutter or Dart VM
             .disableAutoConnect() // disable auto-connection
             .build());
@@ -45,6 +46,8 @@ class SendingEvent {
   static String askQuestion = 'askQuestion';
 
   static String answerQuestion = 'answerQuestion';
+
+  static String finishGame = 'finishGame';
 }
 
 class RecievingEvent {
