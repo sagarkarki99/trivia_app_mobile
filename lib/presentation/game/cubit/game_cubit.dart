@@ -46,10 +46,11 @@ class GameCubit extends Cubit<GameState> {
 
     socketClient.recieveOn(RecievingEvent.newUserJoined, (data) {
       final user = ConnectedUser.fromJson(data as Map<String, dynamic>);
-      connectedUserListKey.currentState?.insertItem(0);
+      connectedUserListKey.currentState
+          ?.insertItem(state.connectedUsers.length);
       emit(state.copyWith(
         status: const GameStatus.updated(),
-        connectedUsers: List.of(state.connectedUsers)..insert(0, user),
+        connectedUsers: List.of(state.connectedUsers)..add(user),
       ));
     });
 

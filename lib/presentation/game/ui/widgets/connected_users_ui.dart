@@ -21,7 +21,7 @@ class ConnectedUsersUi extends StatelessWidget {
                   key: ValueKey(index),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: UserItem(name: users[0].name),
+                    child: UserItem(name: users[index].name),
                   ),
                 )),
           );
