@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/presentation/game/cubit/game_cubit.dart';
 import 'package:trivia_app/presentation/game/round_cubit/round_cubit.dart';
+import 'package:trivia_app/presentation/game/ui/screens/playground_screen.dart';
+import 'package:trivia_app/presentation/game/ui/widgets/widgets.dart';
+import 'package:trivia_app/presentation/ui_config/animations/scale_animation.dart';
 
 class QuestionView extends StatelessWidget {
   const QuestionView({super.key});
@@ -14,23 +17,19 @@ class QuestionView extends StatelessWidget {
         final connectedUsers = context.read<GameCubit>().state.connectedUsers;
         return Column(
           children: [
-            Text(
-              question.question,
-              style: Theme.of(context).textTheme.headline3,
-            ),
+            QuestionTitle(question: question.question),
             const SizedBox(height: 16),
             ...question.answerOptions.map((answer) {
-              final answerCount = state.answers
+              final answeredUsers = state.answers
                   .where((ans) => ans.userAnswer == answer)
                   .map((e) => e.getUserIn(connectedUsers))
-                  .toList()
-                  .length;
-              return Row(
-                children: [
-                  Text(answer),
-                  const SizedBox(width: 6),
-                  Text(answerCount.toString())
-                ],
+                  .toList();
+              return AnswerOptionUI(
+                title: Text(answer),
+                trailing: ScaleAnimation(
+                    child: CloseUserAvatar(
+                  users: answeredUsers,
+                )),
               );
             }).toList(),
             const CountDownUi()

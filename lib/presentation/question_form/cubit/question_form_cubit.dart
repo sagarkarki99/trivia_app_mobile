@@ -17,9 +17,9 @@ class QuestionFormCubit extends Cubit<QuestionFormState> {
   QuestionFormCubit() : super(const QuestionFormState()) {
     questionController = TextEditingController(text: "What is your name?");
     answer1Controller = TextEditingController(text: "Nino");
-    answer2Controller = TextEditingController();
-    answer3Controller = TextEditingController();
-    answer4Controller = TextEditingController();
+    answer2Controller = TextEditingController(text: "Sagar");
+    answer3Controller = TextEditingController(text: "Saugor");
+    answer4Controller = TextEditingController(text: "Sanigor");
     _formKey = GlobalKey<FormState>();
   }
 
