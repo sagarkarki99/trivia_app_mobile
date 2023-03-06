@@ -46,7 +46,7 @@ class AnswerItem extends StatelessWidget {
               tileColor: isSelected
                   ? AppColors.light.lightGreen.withOpacity(0.4)
                   : AppColors.light.grey,
-              trailing: _buildTrailingWidget(state),
+              trailing: _buildTrailingWidget(),
             ),
           ),
         );
@@ -54,7 +54,7 @@ class AnswerItem extends StatelessWidget {
     );
   }
 
-  Widget _buildTrailingWidget(RoundState state) {
+  Widget _buildTrailingWidget() {
     return isSelected
         ? ScaleAnimation(
             child: IconButton(
@@ -66,6 +66,40 @@ class AnswerItem extends StatelessWidget {
             ),
           )
         : const SizedBox();
+  }
+}
+
+class AnswerOptionUI extends StatelessWidget {
+  final Widget? trailing;
+  final Widget? title;
+  final Color? tileColor;
+  const AnswerOptionUI({
+    super.key,
+    this.trailing,
+    this.title,
+    this.tileColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
+      child: ListTile(
+        title: title,
+        visualDensity: VisualDensity.compact,
+        dense: true,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 12.0,
+          vertical: 8.0,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          side: BorderSide(color: AppColors.light.grey),
+        ),
+        tileColor: tileColor ?? AppColors.light.grey,
+        trailing: trailing,
+      ),
+    );
   }
 }
 
@@ -146,7 +180,9 @@ class CloseUserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (users.length == 1) {
+    if (users.isEmpty) {
+      return const SizedBox();
+    } else if (users.length == 1) {
       return UserAvatar(username: users[0].name);
     } else if (users.length == 2) {
       return Row(
