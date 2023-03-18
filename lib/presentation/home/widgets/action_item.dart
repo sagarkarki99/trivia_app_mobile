@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trivia_app/presentation/ui_config/app_colors.dart';
+import 'package:trivia_app/presentation/ui_config/global_widgets/scale_tap_indicator.dart';
 
 class ActionItem extends StatelessWidget {
   final String label;
@@ -14,10 +15,8 @@ class ActionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return ScaleTapDetector(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(12.0),
-      splashColor: AppColors.light.grey,
       child: Container(
         width: MediaQuery.of(context).size.width * 0.3,
         padding: const EdgeInsets.all(12.0),

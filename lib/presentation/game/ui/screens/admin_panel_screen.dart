@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivia_app/data/socket_client.dart';
 import 'package:trivia_app/presentation/game/cubit/game_cubit.dart';
-import 'package:trivia_app/presentation/game/ui/screens/sharing_game_screen.dart';
-import 'package:trivia_app/presentation/game/ui/widgets/connected_users_ui.dart';
 
 import 'package:trivia_app/presentation/game/ui/widgets/finish_button.dart';
 import 'package:trivia_app/presentation/game/ui/widgets/question_view.dart';
 import 'package:trivia_app/presentation/home/lobby_screen.dart';
+import 'package:trivia_app/presentation/ui_config/animations/slide_animation.dart';
 
 import '../../../../di/locator.dart';
-import '../../../question_form/question_form.dart';
 
 class AdminPanelScreen extends StatelessWidget {
   final String gameId;
@@ -29,6 +27,12 @@ class AdminPanelScreen extends StatelessWidget {
             duration: const Duration(
               milliseconds: 500,
             ),
+            transitionBuilder: (child, animation) {
+              return SlideAnimation(
+                begin: const Offset(-1, 0),
+                child: child,
+              );
+            },
             child: gameState.status is! GameStarted
                 ? const LobbyScreen()
                 : const _Body(),
@@ -70,35 +74,7 @@ class _Body extends StatelessWidget {
               return Text('GameId: ${context.read<GameCubit>().state.gameId}');
             },
           ),
-          ElevatedButton(
-            onPressed: () async {
-              showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                builder: (ctx) => QuestionForm(
-                  onAsk: (question) {
-                    context.read<GameCubit>().askQuestion(question);
-                    Navigator.of(context).pop();
-                  },
-                ),
-              );
-            },
-            child: const Text('Ask New Question'),
-          ),
-          ElevatedButton(
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (ctx) => BlocProvider.value(
-                    value: context.read<GameCubit>(),
-                    child: const SharingGameScreen(),
-                  ),
-                );
-              },
-              child: const Text('Share')),
           const FinishButton(),
-          const Text('Connected Users'),
-          const Expanded(child: ConnectedUsersUi()),
         ],
       ),
     );
