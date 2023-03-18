@@ -4,5 +4,7 @@ part of 'home_cubit.dart';
 class HomeState with _$HomeState {
   const factory HomeState.initial() = _Initial;
   const factory HomeState.gameCreated(String gameId) = GameCreated;
+  const factory HomeState.loading(String message) = Loading;
+
   const factory HomeState.gameJoined(InitialGameState gameState) = GameJoined;
 }

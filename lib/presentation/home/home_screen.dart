@@ -35,7 +35,27 @@ class _Body extends StatelessWidget {
       listener: (context, state) {
         state.when(
           initial: () {},
+          loading: (message) {
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) => Dialog(
+                insetAnimationCurve: Curves.bounceIn,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      const CircularProgressIndicator(strokeWidth: 1.5),
+                      const SizedBox(width: 8.0),
+                      Text(message)
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
           gameCreated: (gameId) {
+            Navigator.of(context).pop();
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => AdminPanelScreen(gameId: gameId),
@@ -43,6 +63,7 @@ class _Body extends StatelessWidget {
             );
           },
           gameJoined: (initialState) {
+            Navigator.of(context).pop();
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) =>

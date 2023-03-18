@@ -26,7 +26,10 @@ class JoiningGameScreen extends StatelessWidget {
             ),
           ),
           body: const TabBarView(
-            children: [GameIdScanner(), _GameIdTextfieldView()],
+            children: [
+              GameIdScanner(),
+              _GameIdTextfieldView(),
+            ],
           ),
         ),
       ),

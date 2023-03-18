@@ -14,7 +14,9 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit({required this.socketClient, required this.authCubit})
       : super(const HomeState.initial()) {
     socketClient.recieveOn(RecievingEvent.gameCreated, (id) {
-      emit(HomeState.gameCreated(id as String));
+      Future.delayed(const Duration(seconds: 100), () {
+        emit(HomeState.gameCreated(id as String));
+      });
     });
 
     socketClient.recieveOn(RecievingEvent.joined, (gameState) {
@@ -24,6 +26,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void joinGame(String gameId) {
+    emit(const HomeState.loading('Joining...'));
     socketClient.send(SendingEvent.joinGame, {
       "gameId": gameId,
       "user": authCubit.state.user?.toJson(),
@@ -31,6 +34,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void createGame() {
+    emit(const HomeState.loading('Creating new game...'));
     socketClient.send(SendingEvent.createGame, authCubit.state.user?.toJson());
   }
 }
