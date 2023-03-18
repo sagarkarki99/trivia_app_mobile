@@ -2,17 +2,17 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:trivia_app/presentation/home/auth_cubit/auth_cubit.dart';
 import 'package:trivia_app/presentation/home/cubit/home_cubit.dart';
 import 'package:trivia_app/presentation/game/ui/screens/joining_game_screen.dart';
 import 'package:trivia_app/presentation/game/ui/screens/playground_screen.dart';
 import 'package:trivia_app/presentation/game/ui/screens/admin_panel_screen.dart';
 import 'package:trivia_app/presentation/home/widgets/action_item.dart';
+import 'package:trivia_app/presentation/ui_config/app_colors.dart';
 
 import '../../data/socket_client.dart';
 import '../../di/locator.dart';
-import '../ui_config/app_colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -52,10 +52,21 @@ class _Body extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      LoadingAnimationWidget.flickr(
-                        leftDotColor: AppColors.light.lightGreen,
-                        rightDotColor: AppColors.light.lightBrown,
-                        size: 36,
+                      SizedBox(
+                        height: 42,
+                        child: LoadingIndicator(
+                          indicatorType: Indicator.ballPulseRise,
+                          strokeWidth: 2.0,
+                          colors: [
+                            AppColors.light.red,
+                            AppColors.light.primary,
+                            Colors.green,
+                            Colors.blue,
+                            Colors.brown,
+                            Colors.pink,
+                            Colors.amberAccent,
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 8.0),
                       Text(message)

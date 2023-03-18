@@ -14,7 +14,9 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit({required this.socketClient, required this.authCubit})
       : super(const HomeState.initial()) {
     socketClient.recieveOn(RecievingEvent.gameCreated, (id) {
-      emit(HomeState.gameCreated(id as String));
+      Future.delayed(const Duration(seconds: 100), () {
+        emit(HomeState.gameCreated(id as String));
+      });
     });
 
     socketClient.recieveOn(RecievingEvent.joined, (gameState) {
