@@ -1,5 +1,7 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:trivia_app/presentation/home/auth_cubit/auth_cubit.dart';
 import 'package:trivia_app/presentation/home/cubit/home_cubit.dart';
@@ -87,17 +89,21 @@ class _Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const WelcomeText(),
+            SvgPicture.asset(
+              'assets/images/quiz.svg',
+              height: MediaQuery.of(context).size.height * 0.3,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ActionItem(
                   label: 'Create Game',
-                  iconData: Icons.hail,
+                  iconData: FluentIcons.form_20_filled,
                   onTap: () => cubit.createGame(),
                 ),
                 ActionItem(
                   label: 'Join Game',
-                  iconData: Icons.join_right_sharp,
+                  iconData: FluentIcons.arrow_join_20_filled,
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => JoiningGameScreen(homeCubit: cubit),

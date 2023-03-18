@@ -19,6 +19,7 @@ class ActionItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(12.0),
       splashColor: AppColors.light.grey,
       child: Container(
+        width: MediaQuery.of(context).size.width * 0.3,
         padding: const EdgeInsets.all(12.0),
         decoration: BoxDecoration(
           color: AppColors.light.background,
@@ -29,6 +30,7 @@ class ActionItem extends StatelessWidget {
             Icon(
               iconData,
               size: 36,
+              color: AppColors.light.primary,
             ),
             const SizedBox(height: 8.0),
             Text(label)

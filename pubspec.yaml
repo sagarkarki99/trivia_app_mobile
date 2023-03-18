@@ -11,19 +11,20 @@ environment:
 dependencies:
   build_runner: ^2.3.3
   cupertino_icons: ^1.0.2
+  fluentui_system_icons: ^1.1.190
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
+  flutter_svg: ^1.1.6
   freezed_annotation: ^2.2.0
   get_it: ^7.2.0
-  json_serializable_collector: ^1.0.0
-  socket_io_client: ^2.0.1
   json_serializable: ^6.6.0
-  theme_tailor_annotation: ^1.0.3
-  qr_flutter: ^4.0.0
-  mobile_scanner: ^2.1.0
-  fluentui_system_icons: ^1.1.190
+  json_serializable_collector: ^1.0.0
   loading_animation_widget: ^1.2.0+4
+  mobile_scanner: ^2.1.0
+  qr_flutter: ^4.0.0
+  socket_io_client: ^2.0.1
+  theme_tailor_annotation: ^1.0.3
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -38,8 +39,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -71,7 +72,5 @@ flutter:
           weight: 600
         - asset: assets/fonts/Quicksand-Bold.ttf
           weight: 700
-
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
