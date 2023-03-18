@@ -13,7 +13,7 @@ class ConnectedUsersUi extends StatelessWidget {
   Widget build(BuildContext context) {
     final users = context.watch<GameCubit>().state.connectedUsers;
     return users.isEmpty
-        ? const Text('Waiting players to join.')
+        ? const Text('No Players.')
         : AnimatedList(
             key: context.read<GameCubit>().connectedUserListKey,
             initialItemCount: users.length,

@@ -7,6 +7,7 @@ import 'package:trivia_app/presentation/game/ui/widgets/connected_users_ui.dart'
 
 import 'package:trivia_app/presentation/game/ui/widgets/finish_button.dart';
 import 'package:trivia_app/presentation/game/ui/widgets/question_view.dart';
+import 'package:trivia_app/presentation/home/lobby_screen.dart';
 
 import '../../../../di/locator.dart';
 import '../../../question_form/question_form.dart';
@@ -21,7 +22,18 @@ class AdminPanelScreen extends StatelessWidget {
       child: BlocProvider(
         create: (context) =>
             GameCubit(socketClient: locator<SocketClient>(), gameId: gameId),
-        child: const _Body(),
+        child: Builder(builder: (context) {
+          final gameState = context.watch<GameCubit>().state;
+
+          return AnimatedSwitcher(
+            duration: const Duration(
+              milliseconds: 500,
+            ),
+            child: gameState.status is! GameStarted
+                ? const LobbyScreen()
+                : const _Body(),
+          );
+        }),
       ),
     );
   }

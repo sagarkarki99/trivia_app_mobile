@@ -14,9 +14,10 @@ class GameState with _$GameState {
 
 @freezed
 class GameStatus with _$GameStatus {
-  const factory GameStatus.initial() = _Initial;
+  const factory GameStatus.initial() = GameInitial;
   const factory GameStatus.loading(String message) = Loading;
   const factory GameStatus.gameCreated() = GameCreated;
+  const factory GameStatus.gameStarted() = GameStarted;
   const factory GameStatus.gameJoined() = GameJoined;
   const factory GameStatus.updated() = Updated;
   const factory GameStatus.userLeft(String message) = UserLeft;

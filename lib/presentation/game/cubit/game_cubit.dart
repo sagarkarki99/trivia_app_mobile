@@ -26,6 +26,9 @@ class GameCubit extends Cubit<GameState> {
   }
 
   void _listenToEvents() {
+    socketClient.recieveOn(RecievingEvent.gameStarted, (id) {
+      emit(state.copyWith(status: const GameStatus.gameStarted()));
+    });
     socketClient.recieveOn(RecievingEvent.gameCreated, (id) {
       emit(
         state.copyWith(
@@ -109,6 +112,10 @@ class GameCubit extends Cubit<GameState> {
     emit(state.copyWith(
       status: const GameStatus.updated(),
     ));
+  }
+
+  void startGame() {
+    socketClient.send(SendingEvent.startGame, state.gameId);
   }
 
   void finishGame() {

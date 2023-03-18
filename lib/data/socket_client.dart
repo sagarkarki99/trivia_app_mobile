@@ -48,10 +48,13 @@ class SendingEvent {
   static String answerQuestion = 'answerQuestion';
 
   static String finishGame = 'finishGame';
+
+  static String startGame = 'startGame';
 }
 
 class RecievingEvent {
   static const String gameCreated = 'gameCreated';
+  static const String gameStarted = 'gameStarted';
   static const String joined = 'joined';
   static const String questionAsked = 'questionAsked';
   static const String newAnswerSubmitted = 'newAnswerSubmitted';
