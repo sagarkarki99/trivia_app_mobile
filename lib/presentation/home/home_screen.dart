@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:trivia_app/presentation/home/auth_cubit/auth_cubit.dart';
 import 'package:trivia_app/presentation/home/cubit/home_cubit.dart';
 import 'package:trivia_app/presentation/game/ui/screens/joining_game_screen.dart';
@@ -8,6 +9,7 @@ import 'package:trivia_app/presentation/game/ui/screens/admin_panel_screen.dart'
 
 import '../../data/socket_client.dart';
 import '../../di/locator.dart';
+import '../ui_config/app_colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -43,10 +45,16 @@ class _Body extends StatelessWidget {
                 insetAnimationCurve: Curves.bounceIn,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Row(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      const CircularProgressIndicator(strokeWidth: 1.5),
-                      const SizedBox(width: 8.0),
+                      LoadingAnimationWidget.flickr(
+                        leftDotColor: AppColors.light.lightGreen,
+                        rightDotColor: AppColors.light.lightBrown,
+                        size: 36,
+                      ),
+                      const SizedBox(height: 8.0),
                       Text(message)
                     ],
                   ),
