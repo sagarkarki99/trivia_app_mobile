@@ -26,80 +26,19 @@ class GameCubit extends Cubit<GameState> {
   }
 
   void _listenToEvents() {
-    socketClient.recieveOn(RecievingEvent.gameStarted, (id) {
-      emit(state.copyWith(status: const GameStatus.gameStarted()));
-    });
+    _listenGameStarted();
 
-    socketClient.recieveOn(RecievingEvent.gameCreated, (id) {
-      emit(
-        state.copyWith(
-          status: const GameStatus.gameCreated(),
-          connectedUsers: [],
-          gameId: id as String,
-        ),
-      );
-    });
+    _listenGameCreated();
 
-    socketClient.recieveOn(RecievingEvent.joined, (gameState) {
-      final s = game_state.InitialGameState.fromJson(
-          gameState as Map<String, dynamic>);
-      emit(state.copyWith(
-          status: const GameStatus.gameJoined(),
-          connectedUsers: s.connectedUsers!));
-    });
+    _listenJoined();
 
-    socketClient.recieveOn(RecievingEvent.newUserJoined, (data) {
-      final user = ConnectedUser.fromJson(data as Map<String, dynamic>);
-      connectedUserListKey.currentState
-          ?.insertItem(state.connectedUsers.length);
-      emit(state.copyWith(
-        status: const GameStatus.gameJoined(),
-        connectedUsers: List.of(state.connectedUsers)..add(user),
-      ));
-    });
+    _listenNewUserJoined();
 
-    socketClient.recieveOn(RecievingEvent.userLeft, (data) {
-      final userId = data['userId'] as String;
-      final userLeft = state.connectedUsers.firstWhere(
-        (user) => user.id == userId,
-      );
+    _listenUserLeft();
 
-      final index = state.connectedUsers.indexOf(userLeft);
-      connectedUserListKey.currentState?.removeItem(
-          index,
-          ((context, animation) => ScaleAnimation(
-                child: UserItem(name: userLeft.name),
-              )));
+    _listenQuestionAsked();
 
-      emit(
-        state.copyWith(
-          connectedUsers: List.of(state.connectedUsers)..remove(userLeft),
-          status: GameStatus.userLeft('${userLeft.name} left the game.'),
-        ),
-      );
-    });
-
-    socketClient.recieveOn(RecievingEvent.questionAsked, (payload) {
-      final questionPayload =
-          QuestionPayload.fromJson(payload as Map<String, dynamic>);
-      emit(
-        state.copyWith(
-          status: const GameStatus.updated(),
-          activeRound: RoundCubit(
-            client: socketClient,
-            gameId: state.gameId,
-            questionPayload: questionPayload,
-          ),
-        ),
-      );
-    });
-
-    socketClient.recieveOn(
-      RecievingEvent.gameFinished,
-      (message) {
-        emit(state.copyWith(status: const GameStatus.gameFinished()));
-      },
-    );
+    _listenGameFinished();
   }
 
   void askQuestion(QuestionPayload payload) {
@@ -121,5 +60,94 @@ class GameCubit extends Cubit<GameState> {
 
   void finishGame() {
     socketClient.send(SendingEvent.finishGame, state.gameId);
+  }
+
+  void _listenGameFinished() {
+    socketClient.recieveOn(
+      RecievingEvent.gameFinished,
+      (message) {
+        emit(state.copyWith(status: const GameStatus.gameFinished()));
+      },
+    );
+  }
+
+  void _listenQuestionAsked() {
+    socketClient.recieveOn(RecievingEvent.questionAsked, (payload) {
+      final questionPayload =
+          QuestionPayload.fromJson(payload as Map<String, dynamic>);
+      emit(
+        state.copyWith(
+          status: const GameStatus.updated(),
+          activeRound: RoundCubit(
+            client: socketClient,
+            gameId: state.gameId,
+            questionPayload: questionPayload,
+          ),
+        ),
+      );
+    });
+  }
+
+  void _listenUserLeft() {
+    socketClient.recieveOn(RecievingEvent.userLeft, (data) {
+      final userId = data['userId'] as String;
+      final userLeft = state.connectedUsers.firstWhere(
+        (user) => user.id == userId,
+      );
+
+      final index = state.connectedUsers.indexOf(userLeft);
+      connectedUserListKey.currentState?.removeItem(
+          index,
+          ((context, animation) => ScaleAnimation(
+                child: UserItem(name: userLeft.name),
+              )));
+
+      emit(
+        state.copyWith(
+          connectedUsers: List.of(state.connectedUsers)..remove(userLeft),
+          status: GameStatus.userLeft('${userLeft.name} left the game.'),
+        ),
+      );
+    });
+  }
+
+  void _listenNewUserJoined() {
+    socketClient.recieveOn(RecievingEvent.newUserJoined, (data) {
+      final user = ConnectedUser.fromJson(data as Map<String, dynamic>);
+      connectedUserListKey.currentState
+          ?.insertItem(state.connectedUsers.length);
+      emit(state.copyWith(
+        status: const GameStatus.gameJoined(),
+        connectedUsers: List.of(state.connectedUsers)..add(user),
+      ));
+    });
+  }
+
+  void _listenJoined() {
+    socketClient.recieveOn(RecievingEvent.joined, (gameState) {
+      final s = game_state.InitialGameState.fromJson(
+          gameState as Map<String, dynamic>);
+      emit(state.copyWith(
+          status: const GameStatus.gameJoined(),
+          connectedUsers: s.connectedUsers!));
+    });
+  }
+
+  void _listenGameCreated() {
+    socketClient.recieveOn(RecievingEvent.gameCreated, (id) {
+      emit(
+        state.copyWith(
+          status: const GameStatus.gameCreated(),
+          connectedUsers: [],
+          gameId: id as String,
+        ),
+      );
+    });
+  }
+
+  void _listenGameStarted() {
+    socketClient.recieveOn(RecievingEvent.gameStarted, (id) {
+      emit(state.copyWith(status: const GameStatus.gameStarted()));
+    });
   }
 }
