@@ -6,6 +6,7 @@ import 'package:trivia_app/presentation/home/cubit/home_cubit.dart';
 import 'package:trivia_app/presentation/game/ui/screens/joining_game_screen.dart';
 import 'package:trivia_app/presentation/game/ui/screens/playground_screen.dart';
 import 'package:trivia_app/presentation/game/ui/screens/admin_panel_screen.dart';
+import 'package:trivia_app/presentation/home/widgets/action_item.dart';
 
 import '../../data/socket_client.dart';
 import '../../di/locator.dart';
@@ -83,24 +84,41 @@ class _Body extends StatelessWidget {
       },
       builder: (ctx, state) {
         return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ElevatedButton(
-                onPressed: () => cubit.createGame(),
-                child: const Text('Create Game')),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => JoiningGameScreen(homeCubit: cubit),
+            const WelcomeText(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ActionItem(
+                  label: 'Create Game',
+                  iconData: Icons.hail,
+                  onTap: () => cubit.createGame(),
                 ),
-              ),
-              child: const Text('Join Game'),
+                ActionItem(
+                  label: 'Join Game',
+                  iconData: Icons.join_right_sharp,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => JoiningGameScreen(homeCubit: cubit),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
           ],
         );
       },
     );
+  }
+}
+
+class WelcomeText extends StatelessWidget {
+  const WelcomeText({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('Welcome to Fuse Trivia.',
+        style: Theme.of(context).textTheme.headline1);
   }
 }
