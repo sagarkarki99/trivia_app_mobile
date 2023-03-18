@@ -6,6 +6,7 @@ import 'package:trivia_app/presentation/game/cubit/game_cubit.dart';
 import 'package:trivia_app/presentation/game/ui/widgets/finish_button.dart';
 import 'package:trivia_app/presentation/game/ui/widgets/question_view.dart';
 import 'package:trivia_app/presentation/home/lobby_screen.dart';
+import 'package:trivia_app/presentation/question_form/question_form.dart';
 import 'package:trivia_app/presentation/ui_config/animations/slide_animation.dart';
 
 import '../../../../di/locator.dart';
@@ -33,9 +34,8 @@ class AdminPanelScreen extends StatelessWidget {
                 child: child,
               );
             },
-            child: gameState.status is! GameStarted
-                ? const LobbyScreen()
-                : const _Body(),
+            child:
+                gameState.shouldBeInLobby ? const LobbyScreen() : const _Body(),
           );
         }),
       ),
@@ -71,11 +71,37 @@ class _Body extends StatelessWidget {
                   child: const QuestionView(),
                 );
               }
-              return Text('GameId: ${context.read<GameCubit>().state.gameId}');
+              return Column(
+                children: [
+                  const Text('Ask the first Question'),
+                  const SizedBox(height: 8.0),
+                  AppButton(
+                    onTap: () => _showQuestionFormSheet(context),
+                    label: 'Ask Question',
+                  )
+                ],
+              );
             },
           ),
           const FinishButton(),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _showQuestionFormSheet(context),
+        child: const Text('Ask'),
+      ),
+    );
+  }
+
+  void _showQuestionFormSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (ctx) => QuestionForm(
+        onAsk: (question) {
+          context.read<GameCubit>().askQuestion(question);
+          Navigator.of(context).pop();
+        },
       ),
     );
   }

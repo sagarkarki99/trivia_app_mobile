@@ -10,6 +10,9 @@ class GameState with _$GameState {
   }) = _GameState;
 
   GameState._();
+
+  bool get shouldBeInLobby =>
+      status is GameInitial || status is GameJoined || status is UserLeft;
 }
 
 @freezed

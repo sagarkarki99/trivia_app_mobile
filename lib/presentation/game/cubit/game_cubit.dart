@@ -29,6 +29,7 @@ class GameCubit extends Cubit<GameState> {
     socketClient.recieveOn(RecievingEvent.gameStarted, (id) {
       emit(state.copyWith(status: const GameStatus.gameStarted()));
     });
+
     socketClient.recieveOn(RecievingEvent.gameCreated, (id) {
       emit(
         state.copyWith(
@@ -52,7 +53,7 @@ class GameCubit extends Cubit<GameState> {
       connectedUserListKey.currentState
           ?.insertItem(state.connectedUsers.length);
       emit(state.copyWith(
-        status: const GameStatus.updated(),
+        status: const GameStatus.gameJoined(),
         connectedUsers: List.of(state.connectedUsers)..add(user),
       ));
     });
