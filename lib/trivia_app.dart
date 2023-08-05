@@ -10,7 +10,7 @@ class TriviaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthCubit(),
+      create: (context) => AuthCubit()..setUser(),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: AppTheme.light,

@@ -33,15 +33,20 @@ class ConnectedUser {
   String id;
   String? imageUrl;
   String name;
+  String email;
 
-  ConnectedUser({required this.id, this.imageUrl, required this.name});
+  ConnectedUser(
+      {required this.id,
+      this.imageUrl,
+      required this.name,
+      required this.email});
 
   factory ConnectedUser.fromJson(Map<String, dynamic> json) {
     return ConnectedUser(
-      id: json['id']!,
-      imageUrl: json['imageUrl'],
-      name: json['name'] ?? 'Game User',
-    );
+        id: json['id']!,
+        imageUrl: json['imageUrl'],
+        name: json['name'] ?? 'Game User',
+        email: json['email']!);
   }
 
   Map<String, dynamic> toJson() {

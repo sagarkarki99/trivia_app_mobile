@@ -5,11 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trivia_app/presentation/home/auth_cubit/auth_cubit.dart';
 import 'package:trivia_app/presentation/home/cubit/home_cubit.dart';
-import 'package:trivia_app/presentation/game/ui/screens/joining_game_screen.dart';
 import 'package:trivia_app/presentation/game/ui/screens/playground_screen.dart';
 import 'package:trivia_app/presentation/game/ui/screens/admin_panel_screen.dart';
 import 'package:trivia_app/presentation/home/widgets/action_item.dart';
+import 'package:trivia_app/presentation/ui_config/global_widgets/google_button.dart';
 import 'package:trivia_app/presentation/ui_config/global_widgets/loading_widget.dart';
+import 'package:trivia_app/presentation/ui_config/theme_extensions.dart';
 
 import '../../data/socket_client.dart';
 import '../../di/locator.dart';
@@ -91,17 +92,44 @@ class _Body extends StatelessWidget {
                 ActionItem(
                   label: 'Join Game',
                   iconData: FluentIcons.arrow_join_20_filled,
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => JoiningGameScreen(homeCubit: cubit),
-                    ),
-                  ),
+                  onTap: () async {
+                    await _showLoginUi(context);
+
+                    //   Navigator.of(context).push(
+                    //   MaterialPageRoute(
+                    //     builder: (context) => JoiningGameScreen(homeCubit: cubit),
+                    //   ),
+                    // );
+                  },
                 ),
               ],
             ),
           ],
         );
       },
+    );
+  }
+
+  Future<void> _showLoginUi(BuildContext context) async {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('Seems like there is no user at the moment.',
+                style: ctx.theme.textTheme.displaySmall),
+            const SizedBox(height: 12),
+            GoogleButton(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                return context.read<AuthCubit>().signInWithGoogle();
+              },
+            )
+          ],
+        ),
+      ),
     );
   }
 }
