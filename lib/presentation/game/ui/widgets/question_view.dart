@@ -27,7 +27,7 @@ class QuestionView extends StatelessWidget {
               return AnswerOptionUI(
                 title: Text(answer),
                 trailing: ScaleAnimation(
-                    child: CloseUserAvatar(
+                    child: OverlappedUserAvatar(
                   users: answeredUsers,
                 )),
               );

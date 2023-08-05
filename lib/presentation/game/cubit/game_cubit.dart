@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -39,6 +41,8 @@ class GameCubit extends Cubit<GameState> {
     _listenQuestionAsked();
 
     _listenGameFinished();
+
+    _listenGameError();
   }
 
   void askQuestion(QuestionPayload payload) {
@@ -148,6 +152,12 @@ class GameCubit extends Cubit<GameState> {
   void _listenGameStarted() {
     socketClient.recieveOn(RecievingEvent.gameStarted, (id) {
       emit(state.copyWith(status: const GameStatus.gameStarted()));
+    });
+  }
+
+  void _listenGameError() {
+    socketClient.recieveOn(RecievingEvent.error, (data) {
+      log(data);
     });
   }
 }

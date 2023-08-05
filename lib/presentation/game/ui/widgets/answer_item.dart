@@ -171,9 +171,9 @@ class WrongAnswerItem extends StatelessWidget {
   }
 }
 
-class CloseUserAvatar extends StatelessWidget {
+class OverlappedUserAvatar extends StatelessWidget {
   final List<ConnectedUser> users;
-  const CloseUserAvatar({
+  const OverlappedUserAvatar({
     super.key,
     required this.users,
   });
@@ -183,26 +183,78 @@ class CloseUserAvatar extends StatelessWidget {
     if (users.isEmpty) {
       return const SizedBox();
     } else if (users.length == 1) {
-      return UserAvatar(username: users[0].name);
+      return UserAvatar.withBorder(username: users[0].name);
     } else if (users.length == 2) {
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          UserAvatar(username: users[0].name),
-          UserAvatar(username: users[1].name)
-        ],
-      );
+      return _TwoOverlappedAvatar(users: users);
     } else {
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          UserAvatar(username: users[0].name),
-          UserAvatar(username: users[1].name),
-          CircleAvatar(
-            child: Text('+${users.length - 2}'),
-          ),
-        ],
-      );
+      return _MoreThanTwoOverlappedAvatar(users: users);
     }
+  }
+}
+
+class _MoreThanTwoOverlappedAvatar extends StatelessWidget {
+  const _MoreThanTwoOverlappedAvatar({
+    required this.users,
+  });
+
+  final List<ConnectedUser> users;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 18 * 6,
+      child: Stack(
+        children: [
+          Positioned(
+            bottom: 0.0,
+            left: (18 * 4) - 12,
+            child: CircleAvatar(
+              radius: 20,
+              backgroundColor: AppColors.light.background,
+              child: CircleAvatar(
+                radius: 18,
+                backgroundColor: AppColors.light.primary,
+                child: ScaleAnimation(
+                  begin: 4,
+                  child: Text('+${(users.length - 2).toString()}'),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 0.0,
+            left: 28.0,
+            child:
+                UserAvatar.withBorder(username: users[users.length - 2].name),
+          ),
+          UserAvatar.withBorder(username: users[users.length - 1].name),
+        ],
+      ),
+    );
+  }
+}
+
+class _TwoOverlappedAvatar extends StatelessWidget {
+  const _TwoOverlappedAvatar({
+    required this.users,
+  });
+
+  final List<ConnectedUser> users;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 18 * 4,
+      child: Stack(
+        children: [
+          Positioned(
+            bottom: 0.0,
+            left: 28.0,
+            child: UserAvatar.withBorder(username: users[1].name),
+          ),
+          UserAvatar.withBorder(username: users[0].name),
+        ],
+      ),
+    );
   }
 }
