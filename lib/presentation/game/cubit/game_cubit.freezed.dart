@@ -1,0 +1,1483 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'game_cubit.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$GameState {
+  List<ConnectedUser> get connectedUsers => throw _privateConstructorUsedError;
+  RoundCubit? get activeRound => throw _privateConstructorUsedError;
+  String get gameId => throw _privateConstructorUsedError;
+  GameStatus get status => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $GameStateCopyWith<GameState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GameStateCopyWith<$Res> {
+  factory $GameStateCopyWith(GameState value, $Res Function(GameState) then) =
+      _$GameStateCopyWithImpl<$Res, GameState>;
+  @useResult
+  $Res call(
+      {List<ConnectedUser> connectedUsers,
+      RoundCubit? activeRound,
+      String gameId,
+      GameStatus status});
+
+  $GameStatusCopyWith<$Res> get status;
+}
+
+/// @nodoc
+class _$GameStateCopyWithImpl<$Res, $Val extends GameState>
+    implements $GameStateCopyWith<$Res> {
+  _$GameStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? connectedUsers = null,
+    Object? activeRound = freezed,
+    Object? gameId = null,
+    Object? status = null,
+  }) {
+    return _then(_value.copyWith(
+      connectedUsers: null == connectedUsers
+          ? _value.connectedUsers
+          : connectedUsers // ignore: cast_nullable_to_non_nullable
+              as List<ConnectedUser>,
+      activeRound: freezed == activeRound
+          ? _value.activeRound
+          : activeRound // ignore: cast_nullable_to_non_nullable
+              as RoundCubit?,
+      gameId: null == gameId
+          ? _value.gameId
+          : gameId // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as GameStatus,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $GameStatusCopyWith<$Res> get status {
+    return $GameStatusCopyWith<$Res>(_value.status, (value) {
+      return _then(_value.copyWith(status: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_GameStateCopyWith<$Res> implements $GameStateCopyWith<$Res> {
+  factory _$$_GameStateCopyWith(
+          _$_GameState value, $Res Function(_$_GameState) then) =
+      __$$_GameStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<ConnectedUser> connectedUsers,
+      RoundCubit? activeRound,
+      String gameId,
+      GameStatus status});
+
+  @override
+  $GameStatusCopyWith<$Res> get status;
+}
+
+/// @nodoc
+class __$$_GameStateCopyWithImpl<$Res>
+    extends _$GameStateCopyWithImpl<$Res, _$_GameState>
+    implements _$$_GameStateCopyWith<$Res> {
+  __$$_GameStateCopyWithImpl(
+      _$_GameState _value, $Res Function(_$_GameState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? connectedUsers = null,
+    Object? activeRound = freezed,
+    Object? gameId = null,
+    Object? status = null,
+  }) {
+    return _then(_$_GameState(
+      connectedUsers: null == connectedUsers
+          ? _value._connectedUsers
+          : connectedUsers // ignore: cast_nullable_to_non_nullable
+              as List<ConnectedUser>,
+      activeRound: freezed == activeRound
+          ? _value.activeRound
+          : activeRound // ignore: cast_nullable_to_non_nullable
+              as RoundCubit?,
+      gameId: null == gameId
+          ? _value.gameId
+          : gameId // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as GameStatus,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_GameState extends _GameState {
+  _$_GameState(
+      {final List<ConnectedUser> connectedUsers = const [],
+      this.activeRound,
+      this.gameId = '',
+      this.status = const GameStatus.initial()})
+      : _connectedUsers = connectedUsers,
+        super._();
+
+  final List<ConnectedUser> _connectedUsers;
+  @override
+  @JsonKey()
+  List<ConnectedUser> get connectedUsers {
+    if (_connectedUsers is EqualUnmodifiableListView) return _connectedUsers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_connectedUsers);
+  }
+
+  @override
+  final RoundCubit? activeRound;
+  @override
+  @JsonKey()
+  final String gameId;
+  @override
+  @JsonKey()
+  final GameStatus status;
+
+  @override
+  String toString() {
+    return 'GameState(connectedUsers: $connectedUsers, activeRound: $activeRound, gameId: $gameId, status: $status)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_GameState &&
+            const DeepCollectionEquality()
+                .equals(other._connectedUsers, _connectedUsers) &&
+            (identical(other.activeRound, activeRound) ||
+                other.activeRound == activeRound) &&
+            (identical(other.gameId, gameId) || other.gameId == gameId) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_connectedUsers),
+      activeRound,
+      gameId,
+      status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_GameStateCopyWith<_$_GameState> get copyWith =>
+      __$$_GameStateCopyWithImpl<_$_GameState>(this, _$identity);
+}
+
+abstract class _GameState extends GameState {
+  factory _GameState(
+      {final List<ConnectedUser> connectedUsers,
+      final RoundCubit? activeRound,
+      final String gameId,
+      final GameStatus status}) = _$_GameState;
+  _GameState._() : super._();
+
+  @override
+  List<ConnectedUser> get connectedUsers;
+  @override
+  RoundCubit? get activeRound;
+  @override
+  String get gameId;
+  @override
+  GameStatus get status;
+  @override
+  @JsonKey(ignore: true)
+  _$$_GameStateCopyWith<_$_GameState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$GameStatus {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) loading,
+    required TResult Function() gameCreated,
+    required TResult Function() gameStarted,
+    required TResult Function() gameJoined,
+    required TResult Function() updated,
+    required TResult Function(String message) userLeft,
+    required TResult Function() gameFinished,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? loading,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameStarted,
+    TResult? Function()? gameJoined,
+    TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
+    TResult? Function()? gameFinished,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? loading,
+    TResult Function()? gameCreated,
+    TResult Function()? gameStarted,
+    TResult Function()? gameJoined,
+    TResult Function()? updated,
+    TResult Function(String message)? userLeft,
+    TResult Function()? gameFinished,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GameInitial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameStarted value) gameStarted,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
+    required TResult Function(GameFinished value) gameFinished,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GameInitial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameStarted value)? gameStarted,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
+    TResult? Function(GameFinished value)? gameFinished,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GameInitial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameStarted value)? gameStarted,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
+    TResult Function(GameFinished value)? gameFinished,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GameStatusCopyWith<$Res> {
+  factory $GameStatusCopyWith(
+          GameStatus value, $Res Function(GameStatus) then) =
+      _$GameStatusCopyWithImpl<$Res, GameStatus>;
+}
+
+/// @nodoc
+class _$GameStatusCopyWithImpl<$Res, $Val extends GameStatus>
+    implements $GameStatusCopyWith<$Res> {
+  _$GameStatusCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$GameInitialCopyWith<$Res> {
+  factory _$$GameInitialCopyWith(
+          _$GameInitial value, $Res Function(_$GameInitial) then) =
+      __$$GameInitialCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GameInitialCopyWithImpl<$Res>
+    extends _$GameStatusCopyWithImpl<$Res, _$GameInitial>
+    implements _$$GameInitialCopyWith<$Res> {
+  __$$GameInitialCopyWithImpl(
+      _$GameInitial _value, $Res Function(_$GameInitial) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GameInitial implements GameInitial {
+  const _$GameInitial();
+
+  @override
+  String toString() {
+    return 'GameStatus.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GameInitial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) loading,
+    required TResult Function() gameCreated,
+    required TResult Function() gameStarted,
+    required TResult Function() gameJoined,
+    required TResult Function() updated,
+    required TResult Function(String message) userLeft,
+    required TResult Function() gameFinished,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? loading,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameStarted,
+    TResult? Function()? gameJoined,
+    TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
+    TResult? Function()? gameFinished,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? loading,
+    TResult Function()? gameCreated,
+    TResult Function()? gameStarted,
+    TResult Function()? gameJoined,
+    TResult Function()? updated,
+    TResult Function(String message)? userLeft,
+    TResult Function()? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GameInitial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameStarted value) gameStarted,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
+    required TResult Function(GameFinished value) gameFinished,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GameInitial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameStarted value)? gameStarted,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
+    TResult? Function(GameFinished value)? gameFinished,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GameInitial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameStarted value)? gameStarted,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
+    TResult Function(GameFinished value)? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GameInitial implements GameStatus {
+  const factory GameInitial() = _$GameInitial;
+}
+
+/// @nodoc
+abstract class _$$LoadingCopyWith<$Res> {
+  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
+      __$$LoadingCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$LoadingCopyWithImpl<$Res>
+    extends _$GameStatusCopyWithImpl<$Res, _$Loading>
+    implements _$$LoadingCopyWith<$Res> {
+  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$Loading(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Loading implements Loading {
+  const _$Loading(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'GameStatus.loading(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Loading &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadingCopyWith<_$Loading> get copyWith =>
+      __$$LoadingCopyWithImpl<_$Loading>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) loading,
+    required TResult Function() gameCreated,
+    required TResult Function() gameStarted,
+    required TResult Function() gameJoined,
+    required TResult Function() updated,
+    required TResult Function(String message) userLeft,
+    required TResult Function() gameFinished,
+  }) {
+    return loading(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? loading,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameStarted,
+    TResult? Function()? gameJoined,
+    TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
+    TResult? Function()? gameFinished,
+  }) {
+    return loading?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? loading,
+    TResult Function()? gameCreated,
+    TResult Function()? gameStarted,
+    TResult Function()? gameJoined,
+    TResult Function()? updated,
+    TResult Function(String message)? userLeft,
+    TResult Function()? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GameInitial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameStarted value) gameStarted,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
+    required TResult Function(GameFinished value) gameFinished,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GameInitial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameStarted value)? gameStarted,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
+    TResult? Function(GameFinished value)? gameFinished,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GameInitial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameStarted value)? gameStarted,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
+    TResult Function(GameFinished value)? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Loading implements GameStatus {
+  const factory Loading(final String message) = _$Loading;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$LoadingCopyWith<_$Loading> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GameCreatedCopyWith<$Res> {
+  factory _$$GameCreatedCopyWith(
+          _$GameCreated value, $Res Function(_$GameCreated) then) =
+      __$$GameCreatedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GameCreatedCopyWithImpl<$Res>
+    extends _$GameStatusCopyWithImpl<$Res, _$GameCreated>
+    implements _$$GameCreatedCopyWith<$Res> {
+  __$$GameCreatedCopyWithImpl(
+      _$GameCreated _value, $Res Function(_$GameCreated) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GameCreated implements GameCreated {
+  const _$GameCreated();
+
+  @override
+  String toString() {
+    return 'GameStatus.gameCreated()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GameCreated);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) loading,
+    required TResult Function() gameCreated,
+    required TResult Function() gameStarted,
+    required TResult Function() gameJoined,
+    required TResult Function() updated,
+    required TResult Function(String message) userLeft,
+    required TResult Function() gameFinished,
+  }) {
+    return gameCreated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? loading,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameStarted,
+    TResult? Function()? gameJoined,
+    TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
+    TResult? Function()? gameFinished,
+  }) {
+    return gameCreated?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? loading,
+    TResult Function()? gameCreated,
+    TResult Function()? gameStarted,
+    TResult Function()? gameJoined,
+    TResult Function()? updated,
+    TResult Function(String message)? userLeft,
+    TResult Function()? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (gameCreated != null) {
+      return gameCreated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GameInitial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameStarted value) gameStarted,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
+    required TResult Function(GameFinished value) gameFinished,
+  }) {
+    return gameCreated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GameInitial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameStarted value)? gameStarted,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
+    TResult? Function(GameFinished value)? gameFinished,
+  }) {
+    return gameCreated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GameInitial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameStarted value)? gameStarted,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
+    TResult Function(GameFinished value)? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (gameCreated != null) {
+      return gameCreated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GameCreated implements GameStatus {
+  const factory GameCreated() = _$GameCreated;
+}
+
+/// @nodoc
+abstract class _$$GameStartedCopyWith<$Res> {
+  factory _$$GameStartedCopyWith(
+          _$GameStarted value, $Res Function(_$GameStarted) then) =
+      __$$GameStartedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GameStartedCopyWithImpl<$Res>
+    extends _$GameStatusCopyWithImpl<$Res, _$GameStarted>
+    implements _$$GameStartedCopyWith<$Res> {
+  __$$GameStartedCopyWithImpl(
+      _$GameStarted _value, $Res Function(_$GameStarted) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GameStarted implements GameStarted {
+  const _$GameStarted();
+
+  @override
+  String toString() {
+    return 'GameStatus.gameStarted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GameStarted);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) loading,
+    required TResult Function() gameCreated,
+    required TResult Function() gameStarted,
+    required TResult Function() gameJoined,
+    required TResult Function() updated,
+    required TResult Function(String message) userLeft,
+    required TResult Function() gameFinished,
+  }) {
+    return gameStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? loading,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameStarted,
+    TResult? Function()? gameJoined,
+    TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
+    TResult? Function()? gameFinished,
+  }) {
+    return gameStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? loading,
+    TResult Function()? gameCreated,
+    TResult Function()? gameStarted,
+    TResult Function()? gameJoined,
+    TResult Function()? updated,
+    TResult Function(String message)? userLeft,
+    TResult Function()? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (gameStarted != null) {
+      return gameStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GameInitial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameStarted value) gameStarted,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
+    required TResult Function(GameFinished value) gameFinished,
+  }) {
+    return gameStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GameInitial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameStarted value)? gameStarted,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
+    TResult? Function(GameFinished value)? gameFinished,
+  }) {
+    return gameStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GameInitial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameStarted value)? gameStarted,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
+    TResult Function(GameFinished value)? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (gameStarted != null) {
+      return gameStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GameStarted implements GameStatus {
+  const factory GameStarted() = _$GameStarted;
+}
+
+/// @nodoc
+abstract class _$$GameJoinedCopyWith<$Res> {
+  factory _$$GameJoinedCopyWith(
+          _$GameJoined value, $Res Function(_$GameJoined) then) =
+      __$$GameJoinedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GameJoinedCopyWithImpl<$Res>
+    extends _$GameStatusCopyWithImpl<$Res, _$GameJoined>
+    implements _$$GameJoinedCopyWith<$Res> {
+  __$$GameJoinedCopyWithImpl(
+      _$GameJoined _value, $Res Function(_$GameJoined) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GameJoined implements GameJoined {
+  const _$GameJoined();
+
+  @override
+  String toString() {
+    return 'GameStatus.gameJoined()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GameJoined);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) loading,
+    required TResult Function() gameCreated,
+    required TResult Function() gameStarted,
+    required TResult Function() gameJoined,
+    required TResult Function() updated,
+    required TResult Function(String message) userLeft,
+    required TResult Function() gameFinished,
+  }) {
+    return gameJoined();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? loading,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameStarted,
+    TResult? Function()? gameJoined,
+    TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
+    TResult? Function()? gameFinished,
+  }) {
+    return gameJoined?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? loading,
+    TResult Function()? gameCreated,
+    TResult Function()? gameStarted,
+    TResult Function()? gameJoined,
+    TResult Function()? updated,
+    TResult Function(String message)? userLeft,
+    TResult Function()? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (gameJoined != null) {
+      return gameJoined();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GameInitial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameStarted value) gameStarted,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
+    required TResult Function(GameFinished value) gameFinished,
+  }) {
+    return gameJoined(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GameInitial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameStarted value)? gameStarted,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
+    TResult? Function(GameFinished value)? gameFinished,
+  }) {
+    return gameJoined?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GameInitial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameStarted value)? gameStarted,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
+    TResult Function(GameFinished value)? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (gameJoined != null) {
+      return gameJoined(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GameJoined implements GameStatus {
+  const factory GameJoined() = _$GameJoined;
+}
+
+/// @nodoc
+abstract class _$$UpdatedCopyWith<$Res> {
+  factory _$$UpdatedCopyWith(_$Updated value, $Res Function(_$Updated) then) =
+      __$$UpdatedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdatedCopyWithImpl<$Res>
+    extends _$GameStatusCopyWithImpl<$Res, _$Updated>
+    implements _$$UpdatedCopyWith<$Res> {
+  __$$UpdatedCopyWithImpl(_$Updated _value, $Res Function(_$Updated) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$Updated implements Updated {
+  const _$Updated();
+
+  @override
+  String toString() {
+    return 'GameStatus.updated()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Updated);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) loading,
+    required TResult Function() gameCreated,
+    required TResult Function() gameStarted,
+    required TResult Function() gameJoined,
+    required TResult Function() updated,
+    required TResult Function(String message) userLeft,
+    required TResult Function() gameFinished,
+  }) {
+    return updated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? loading,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameStarted,
+    TResult? Function()? gameJoined,
+    TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
+    TResult? Function()? gameFinished,
+  }) {
+    return updated?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? loading,
+    TResult Function()? gameCreated,
+    TResult Function()? gameStarted,
+    TResult Function()? gameJoined,
+    TResult Function()? updated,
+    TResult Function(String message)? userLeft,
+    TResult Function()? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GameInitial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameStarted value) gameStarted,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
+    required TResult Function(GameFinished value) gameFinished,
+  }) {
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GameInitial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameStarted value)? gameStarted,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
+    TResult? Function(GameFinished value)? gameFinished,
+  }) {
+    return updated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GameInitial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameStarted value)? gameStarted,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
+    TResult Function(GameFinished value)? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Updated implements GameStatus {
+  const factory Updated() = _$Updated;
+}
+
+/// @nodoc
+abstract class _$$UserLeftCopyWith<$Res> {
+  factory _$$UserLeftCopyWith(
+          _$UserLeft value, $Res Function(_$UserLeft) then) =
+      __$$UserLeftCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$UserLeftCopyWithImpl<$Res>
+    extends _$GameStatusCopyWithImpl<$Res, _$UserLeft>
+    implements _$$UserLeftCopyWith<$Res> {
+  __$$UserLeftCopyWithImpl(_$UserLeft _value, $Res Function(_$UserLeft) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$UserLeft(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserLeft implements UserLeft {
+  const _$UserLeft(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'GameStatus.userLeft(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserLeft &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserLeftCopyWith<_$UserLeft> get copyWith =>
+      __$$UserLeftCopyWithImpl<_$UserLeft>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) loading,
+    required TResult Function() gameCreated,
+    required TResult Function() gameStarted,
+    required TResult Function() gameJoined,
+    required TResult Function() updated,
+    required TResult Function(String message) userLeft,
+    required TResult Function() gameFinished,
+  }) {
+    return userLeft(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? loading,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameStarted,
+    TResult? Function()? gameJoined,
+    TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
+    TResult? Function()? gameFinished,
+  }) {
+    return userLeft?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? loading,
+    TResult Function()? gameCreated,
+    TResult Function()? gameStarted,
+    TResult Function()? gameJoined,
+    TResult Function()? updated,
+    TResult Function(String message)? userLeft,
+    TResult Function()? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (userLeft != null) {
+      return userLeft(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GameInitial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameStarted value) gameStarted,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
+    required TResult Function(GameFinished value) gameFinished,
+  }) {
+    return userLeft(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GameInitial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameStarted value)? gameStarted,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
+    TResult? Function(GameFinished value)? gameFinished,
+  }) {
+    return userLeft?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GameInitial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameStarted value)? gameStarted,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
+    TResult Function(GameFinished value)? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (userLeft != null) {
+      return userLeft(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserLeft implements GameStatus {
+  const factory UserLeft(final String message) = _$UserLeft;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$UserLeftCopyWith<_$UserLeft> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GameFinishedCopyWith<$Res> {
+  factory _$$GameFinishedCopyWith(
+          _$GameFinished value, $Res Function(_$GameFinished) then) =
+      __$$GameFinishedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GameFinishedCopyWithImpl<$Res>
+    extends _$GameStatusCopyWithImpl<$Res, _$GameFinished>
+    implements _$$GameFinishedCopyWith<$Res> {
+  __$$GameFinishedCopyWithImpl(
+      _$GameFinished _value, $Res Function(_$GameFinished) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GameFinished implements GameFinished {
+  const _$GameFinished();
+
+  @override
+  String toString() {
+    return 'GameStatus.gameFinished()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GameFinished);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) loading,
+    required TResult Function() gameCreated,
+    required TResult Function() gameStarted,
+    required TResult Function() gameJoined,
+    required TResult Function() updated,
+    required TResult Function(String message) userLeft,
+    required TResult Function() gameFinished,
+  }) {
+    return gameFinished();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? loading,
+    TResult? Function()? gameCreated,
+    TResult? Function()? gameStarted,
+    TResult? Function()? gameJoined,
+    TResult? Function()? updated,
+    TResult? Function(String message)? userLeft,
+    TResult? Function()? gameFinished,
+  }) {
+    return gameFinished?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? loading,
+    TResult Function()? gameCreated,
+    TResult Function()? gameStarted,
+    TResult Function()? gameJoined,
+    TResult Function()? updated,
+    TResult Function(String message)? userLeft,
+    TResult Function()? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (gameFinished != null) {
+      return gameFinished();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GameInitial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(GameStarted value) gameStarted,
+    required TResult Function(GameJoined value) gameJoined,
+    required TResult Function(Updated value) updated,
+    required TResult Function(UserLeft value) userLeft,
+    required TResult Function(GameFinished value) gameFinished,
+  }) {
+    return gameFinished(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GameInitial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(GameStarted value)? gameStarted,
+    TResult? Function(GameJoined value)? gameJoined,
+    TResult? Function(Updated value)? updated,
+    TResult? Function(UserLeft value)? userLeft,
+    TResult? Function(GameFinished value)? gameFinished,
+  }) {
+    return gameFinished?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GameInitial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(GameStarted value)? gameStarted,
+    TResult Function(GameJoined value)? gameJoined,
+    TResult Function(Updated value)? updated,
+    TResult Function(UserLeft value)? userLeft,
+    TResult Function(GameFinished value)? gameFinished,
+    required TResult orElse(),
+  }) {
+    if (gameFinished != null) {
+      return gameFinished(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GameFinished implements GameStatus {
+  const factory GameFinished() = _$GameFinished;
+}

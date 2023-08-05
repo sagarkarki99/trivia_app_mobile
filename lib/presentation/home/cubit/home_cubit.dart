@@ -24,6 +24,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void joinGame(String gameId) {
+    emit(const HomeState.loading('Joining...'));
     socketClient.send(SendingEvent.joinGame, {
       "gameId": gameId,
       "user": authCubit.state.user?.toJson(),
@@ -31,6 +32,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void createGame() {
+    emit(const HomeState.loading('Creating new game...'));
     socketClient.send(SendingEvent.createGame, authCubit.state.user?.toJson());
   }
 }

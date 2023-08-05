@@ -1,10 +1,15 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trivia_app/presentation/home/auth_cubit/auth_cubit.dart';
 import 'package:trivia_app/presentation/home/cubit/home_cubit.dart';
-import 'package:trivia_app/presentation/playground/ui/joining_game_screen.dart';
-import 'package:trivia_app/presentation/playground/ui/playground_screen.dart';
-import 'package:trivia_app/presentation/question_panel/ui/admin_panel_screen.dart';
+import 'package:trivia_app/presentation/game/ui/screens/joining_game_screen.dart';
+import 'package:trivia_app/presentation/game/ui/screens/playground_screen.dart';
+import 'package:trivia_app/presentation/game/ui/screens/admin_panel_screen.dart';
+import 'package:trivia_app/presentation/home/widgets/action_item.dart';
+import 'package:trivia_app/presentation/ui_config/global_widgets/loading_widget.dart';
 
 import '../../data/socket_client.dart';
 import '../../di/locator.dart';
@@ -35,7 +40,20 @@ class _Body extends StatelessWidget {
       listener: (context, state) {
         state.when(
           initial: () {},
+          loading: (message) {
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) => Dialog(
+                insetAnimationCurve: Curves.bounceIn,
+                child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: LoadingWidget(message: message)),
+              ),
+            );
+          },
           gameCreated: (gameId) {
+            Navigator.of(context).pop();
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => AdminPanelScreen(gameId: gameId),
@@ -43,9 +61,11 @@ class _Body extends StatelessWidget {
             );
           },
           gameJoined: (initialState) {
+            Navigator.of(context).pop();
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => PlaygroundScreen(initialState),
+                builder: (context) =>
+                    PlaygroundScreen(initialState: initialState),
               ),
             );
           },
@@ -53,24 +73,49 @@ class _Body extends StatelessWidget {
       },
       builder: (ctx, state) {
         return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ElevatedButton(
-                onPressed: () => cubit.createGame(),
-                child: const Text('Create Game')),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => JoiningGameScreen(homeCubit: cubit),
-                ),
-              ),
-              child: const Text('Join Game'),
+            const WelcomeText(),
+            SvgPicture.asset(
+              'assets/images/quiz.svg',
+              height: MediaQuery.of(context).size.height * 0.3,
             ),
-            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ActionItem(
+                  label: 'Create Game',
+                  iconData: FluentIcons.form_20_filled,
+                  onTap: () => cubit.createGame(),
+                ),
+                ActionItem(
+                  label: 'Join Game',
+                  iconData: FluentIcons.arrow_join_20_filled,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => JoiningGameScreen(homeCubit: cubit),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         );
       },
+    );
+  }
+}
+
+class WelcomeText extends StatelessWidget {
+  const WelcomeText({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedTextKit(
+      animatedTexts: [
+        WavyAnimatedText('Welcome to Fuse Trivia.',
+            textStyle: Theme.of(context).textTheme.displayLarge)
+      ],
     );
   }
 }

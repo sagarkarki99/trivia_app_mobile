@@ -20,6 +20,7 @@ mixin _$HomeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String gameId) gameCreated,
+    required TResult Function(String message) loading,
     required TResult Function(InitialGameState gameState) gameJoined,
   }) =>
       throw _privateConstructorUsedError;
@@ -27,6 +28,7 @@ mixin _$HomeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String gameId)? gameCreated,
+    TResult? Function(String message)? loading,
     TResult? Function(InitialGameState gameState)? gameJoined,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,6 +36,7 @@ mixin _$HomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String gameId)? gameCreated,
+    TResult Function(String message)? loading,
     TResult Function(InitialGameState gameState)? gameJoined,
     required TResult orElse(),
   }) =>
@@ -42,6 +45,7 @@ mixin _$HomeState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(Loading value) loading,
     required TResult Function(GameJoined value) gameJoined,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +53,7 @@ mixin _$HomeState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(Loading value)? loading,
     TResult? Function(GameJoined value)? gameJoined,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +61,7 @@ mixin _$HomeState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(GameCreated value)? gameCreated,
+    TResult Function(Loading value)? loading,
     TResult Function(GameJoined value)? gameJoined,
     required TResult orElse(),
   }) =>
@@ -118,6 +124,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String gameId) gameCreated,
+    required TResult Function(String message) loading,
     required TResult Function(InitialGameState gameState) gameJoined,
   }) {
     return initial();
@@ -128,6 +135,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String gameId)? gameCreated,
+    TResult? Function(String message)? loading,
     TResult? Function(InitialGameState gameState)? gameJoined,
   }) {
     return initial?.call();
@@ -138,6 +146,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String gameId)? gameCreated,
+    TResult Function(String message)? loading,
     TResult Function(InitialGameState gameState)? gameJoined,
     required TResult orElse(),
   }) {
@@ -152,6 +161,7 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(Loading value) loading,
     required TResult Function(GameJoined value) gameJoined,
   }) {
     return initial(this);
@@ -162,6 +172,7 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(Loading value)? loading,
     TResult? Function(GameJoined value)? gameJoined,
   }) {
     return initial?.call(this);
@@ -172,6 +183,7 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(GameCreated value)? gameCreated,
+    TResult Function(Loading value)? loading,
     TResult Function(GameJoined value)? gameJoined,
     required TResult orElse(),
   }) {
@@ -252,6 +264,7 @@ class _$GameCreated implements GameCreated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String gameId) gameCreated,
+    required TResult Function(String message) loading,
     required TResult Function(InitialGameState gameState) gameJoined,
   }) {
     return gameCreated(gameId);
@@ -262,6 +275,7 @@ class _$GameCreated implements GameCreated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String gameId)? gameCreated,
+    TResult? Function(String message)? loading,
     TResult? Function(InitialGameState gameState)? gameJoined,
   }) {
     return gameCreated?.call(gameId);
@@ -272,6 +286,7 @@ class _$GameCreated implements GameCreated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String gameId)? gameCreated,
+    TResult Function(String message)? loading,
     TResult Function(InitialGameState gameState)? gameJoined,
     required TResult orElse(),
   }) {
@@ -286,6 +301,7 @@ class _$GameCreated implements GameCreated {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(Loading value) loading,
     required TResult Function(GameJoined value) gameJoined,
   }) {
     return gameCreated(this);
@@ -296,6 +312,7 @@ class _$GameCreated implements GameCreated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(Loading value)? loading,
     TResult? Function(GameJoined value)? gameJoined,
   }) {
     return gameCreated?.call(this);
@@ -306,6 +323,7 @@ class _$GameCreated implements GameCreated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(GameCreated value)? gameCreated,
+    TResult Function(Loading value)? loading,
     TResult Function(GameJoined value)? gameJoined,
     required TResult orElse(),
   }) {
@@ -322,6 +340,149 @@ abstract class GameCreated implements HomeState {
   String get gameId;
   @JsonKey(ignore: true)
   _$$GameCreatedCopyWith<_$GameCreated> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadingCopyWith<$Res> {
+  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
+      __$$LoadingCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$LoadingCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$Loading>
+    implements _$$LoadingCopyWith<$Res> {
+  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$Loading(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Loading implements Loading {
+  const _$Loading(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'HomeState.loading(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Loading &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadingCopyWith<_$Loading> get copyWith =>
+      __$$LoadingCopyWithImpl<_$Loading>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String gameId) gameCreated,
+    required TResult Function(String message) loading,
+    required TResult Function(InitialGameState gameState) gameJoined,
+  }) {
+    return loading(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String gameId)? gameCreated,
+    TResult? Function(String message)? loading,
+    TResult? Function(InitialGameState gameState)? gameJoined,
+  }) {
+    return loading?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String gameId)? gameCreated,
+    TResult Function(String message)? loading,
+    TResult Function(InitialGameState gameState)? gameJoined,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(Loading value) loading,
+    required TResult Function(GameJoined value) gameJoined,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(GameJoined value)? gameJoined,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(GameCreated value)? gameCreated,
+    TResult Function(Loading value)? loading,
+    TResult Function(GameJoined value)? gameJoined,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Loading implements HomeState {
+  const factory Loading(final String message) = _$Loading;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$LoadingCopyWith<_$Loading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -392,6 +553,7 @@ class _$GameJoined implements GameJoined {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String gameId) gameCreated,
+    required TResult Function(String message) loading,
     required TResult Function(InitialGameState gameState) gameJoined,
   }) {
     return gameJoined(gameState);
@@ -402,6 +564,7 @@ class _$GameJoined implements GameJoined {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String gameId)? gameCreated,
+    TResult? Function(String message)? loading,
     TResult? Function(InitialGameState gameState)? gameJoined,
   }) {
     return gameJoined?.call(gameState);
@@ -412,6 +575,7 @@ class _$GameJoined implements GameJoined {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String gameId)? gameCreated,
+    TResult Function(String message)? loading,
     TResult Function(InitialGameState gameState)? gameJoined,
     required TResult orElse(),
   }) {
@@ -426,6 +590,7 @@ class _$GameJoined implements GameJoined {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(GameCreated value) gameCreated,
+    required TResult Function(Loading value) loading,
     required TResult Function(GameJoined value) gameJoined,
   }) {
     return gameJoined(this);
@@ -436,6 +601,7 @@ class _$GameJoined implements GameJoined {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(GameCreated value)? gameCreated,
+    TResult? Function(Loading value)? loading,
     TResult? Function(GameJoined value)? gameJoined,
   }) {
     return gameJoined?.call(this);
@@ -446,6 +612,7 @@ class _$GameJoined implements GameJoined {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(GameCreated value)? gameCreated,
+    TResult Function(Loading value)? loading,
     TResult Function(GameJoined value)? gameJoined,
     required TResult orElse(),
   }) {
