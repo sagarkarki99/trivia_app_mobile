@@ -50,9 +50,6 @@ class CustomTextField extends StatelessWidget {
                 ),
                 onChanged: onChanged,
                 textInputAction: TextInputAction.next,
-                inputFormatters: [
-                  _RegExpInputFormatter(RegExp(r'^[0-9]{1,2}')),
-                ],
               ),
             ),
             isSelected == null ? const SizedBox() : _buildTrailing(context),

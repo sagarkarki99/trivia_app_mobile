@@ -114,7 +114,7 @@ class WelcomeText extends StatelessWidget {
     return AnimatedTextKit(
       animatedTexts: [
         WavyAnimatedText('Welcome to Fuse Trivia.',
-            textStyle: Theme.of(context).textTheme.headline1)
+            textStyle: Theme.of(context).textTheme.displayLarge)
       ],
     );
   }

@@ -1,11 +1,18 @@
 import 'package:socket_io_client/socket_io_client.dart' as io;
 
+abstract class SocketClient {
+  send(String event, dynamic payload);
+  recieveOn(String event, Function(dynamic data) onDataRecieve);
+
+  disconnect();
+}
+
 class SocketClientImpl implements SocketClient {
   late io.Socket socket;
   SocketClientImpl() {
     socket = io.io(
-        'http://192.168.0.107:3001',
-        // 'http://172.16.10.62:3001',
+        // 'https://trivia-server.onrender.com',
+        'http://localhost:3001',
         io.OptionBuilder()
             .setTransports(['websocket']) // for Flutter or Dart VM
             .disableAutoConnect() // disable auto-connection
@@ -32,13 +39,6 @@ class SocketClientImpl implements SocketClient {
   }
 }
 
-abstract class SocketClient {
-  send(String event, dynamic payload);
-  recieveOn(String event, Function(dynamic data) onDataRecieve);
-
-  disconnect();
-}
-
 class SendingEvent {
   static const String createGame = 'createGame';
   static const String joinGame = 'joinGame';
@@ -61,4 +61,5 @@ class RecievingEvent {
   static const String newUserJoined = 'newUserJoined';
   static const String gameFinished = 'gameFinished';
   static const String userLeft = 'userLeft';
+  static const String error = 'error';
 }
